@@ -1,0 +1,11 @@
+C:\Users\Francis\OneDrive - polymtl.ca\Documents\Visual Studio 2017\Projects\emptyWebAPI\emptyWebAPI\bin\Release\netcoreapp2.0\TeamGuenonWebApi.deps.json
+C:\Users\Francis\OneDrive - polymtl.ca\Documents\Visual Studio 2017\Projects\emptyWebAPI\emptyWebAPI\bin\Release\netcoreapp2.0\TeamGuenonWebApi.runtimeconfig.json
+C:\Users\Francis\OneDrive - polymtl.ca\Documents\Visual Studio 2017\Projects\emptyWebAPI\emptyWebAPI\bin\Release\netcoreapp2.0\TeamGuenonWebApi.runtimeconfig.dev.json
+C:\Users\Francis\OneDrive - polymtl.ca\Documents\Visual Studio 2017\Projects\emptyWebAPI\emptyWebAPI\bin\Release\netcoreapp2.0\TeamGuenonWebApi.dll
+C:\Users\Francis\OneDrive - polymtl.ca\Documents\Visual Studio 2017\Projects\emptyWebAPI\emptyWebAPI\bin\Release\netcoreapp2.0\TeamGuenonWebApi.pdb
+C:\Users\Francis\OneDrive - polymtl.ca\Documents\Visual Studio 2017\Projects\emptyWebAPI\emptyWebAPI\obj\Release\netcoreapp2.0\TeamGuenonWebApi.csprojResolveAssemblyReference.cache
+C:\Users\Francis\OneDrive - polymtl.ca\Documents\Visual Studio 2017\Projects\emptyWebAPI\emptyWebAPI\obj\Release\netcoreapp2.0\TeamGuenonWebApi.csproj.CoreCompileInputs.cache
+C:\Users\Francis\OneDrive - polymtl.ca\Documents\Visual Studio 2017\Projects\emptyWebAPI\emptyWebAPI\obj\Release\netcoreapp2.0\TeamGuenonWebApi.AssemblyInfoInputs.cache
+C:\Users\Francis\OneDrive - polymtl.ca\Documents\Visual Studio 2017\Projects\emptyWebAPI\emptyWebAPI\obj\Release\netcoreapp2.0\TeamGuenonWebApi.AssemblyInfo.cs
+C:\Users\Francis\OneDrive - polymtl.ca\Documents\Visual Studio 2017\Projects\emptyWebAPI\emptyWebAPI\obj\Release\netcoreapp2.0\TeamGuenonWebApi.dll
+C:\Users\Francis\OneDrive - polymtl.ca\Documents\Visual Studio 2017\Projects\emptyWebAPI\emptyWebAPI\obj\Release\netcoreapp2.0\TeamGuenonWebApi.pdb
