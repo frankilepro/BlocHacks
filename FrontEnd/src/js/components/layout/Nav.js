@@ -19,7 +19,7 @@ export default class Nav extends React.Component {
   render() {
     const { location } = this.props;
     const featuredClass = location.pathname === "/" ? "active" : "";
-    const archivesClass = location.pathname.match(/^\/archives/) ? "active" : "";
+    const dataClass = location.pathname.match(/^\/data/) ? "active" : "";
     const mapsClass = location.pathname.match(/^\/maps/) ? "active" : "";
 
     return (
@@ -40,9 +40,9 @@ export default class Nav extends React.Component {
                     <span class='glyphicon glyphicon-home'></span> Home
                 </IndexLink>
             </li>
-            <li class="archivesClass">
-                <Link to='archives'>
-                    <span class='glyphicon glyphicon-education'></span> Archives
+            <li class="dataClass">
+                <Link to='data'>
+                    <span class='glyphicon glyphicon-education'></span> Data
                 </Link>
             </li>
             <li class="mapsClass">
