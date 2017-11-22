@@ -1,0 +1,10 @@
+#map {
+    height:300px;
+    width:100%;
+}
+
+.navbar-collapse.in {
+    overflow: hidden;
+    max-height: none;
+    height: auto;
+}
