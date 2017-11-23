@@ -1,7 +1,7 @@
 import React from "react";
 
-// const API_URL = 'http://teamguenonwebapi.azurewebsites.net/api/todos';
-const API_URL = 'http://localhost:59118/api/todos';
+const API_URL = 'http://teamguenonwebapi.azurewebsites.net/api/todos';
+//const API_URL = 'http://localhost:59118/api/todos';
 
 export default class Data extends React.Component {
   constructor() {
@@ -9,7 +9,7 @@ export default class Data extends React.Component {
     this.state = {
       data: "",
       obj: {
-        "name":""
+        name:""
       }
     }
   }
@@ -20,8 +20,8 @@ export default class Data extends React.Component {
       return response.json();
     })
     .then(function(json){
-      /*console.log(json);
-      let names = "";
+      console.log(json);
+      /*let names = "";
       for(var i = 0; i < json.length; i++){
         names = names + json[i].name + ", ";
       }*/
@@ -42,19 +42,22 @@ export default class Data extends React.Component {
   }
 
   onSubmit = (e) => {
+    e.preventDefault();
     this.state.obj.name = $('#input-name').val();
     console.log(this.state.obj);
 
-    // fetch(API_URL, {
-    //   method:"post",
-    //   header : {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: this.state.obj
-    // });
+     fetch(API_URL, {
+       mode:"no-cors",
+       method:"post",
+       body: this.state.obj,
+       headers:{
+         ContentType:"application/json"
+       }
+     })
+     .then(function(response){
+     });
 
-    $.ajax({
+    /*$.ajax({
       url: API_URL,
       type: 'POST',
       mode: "cors",
@@ -65,7 +68,7 @@ export default class Data extends React.Component {
       error: function (jqXHR, status) {
         console.log(jqXHR);
       }
-    });
+    });*/
 
     // var settings = {
     //   "async": true,
