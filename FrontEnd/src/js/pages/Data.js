@@ -7,10 +7,7 @@ export default class Data extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: "",
-      obj: {
-        name:""
-      }
+      data: ""
     }
   }
 
@@ -43,48 +40,22 @@ export default class Data extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.state.obj.name = $('#input-name').val();
-    console.log(this.state.obj);
+
+    var jsonobj = {};
+    jsonobj.name = $('#input-name').val();
+
+    console.log(JSON.stringify(jsonobj));
+
 
      fetch(API_URL, {
-       mode:"no-cors",
-       method:"post",
-       body: this.state.obj,
-       headers:{
-         ContentType:"application/json"
-       }
-     })
-     .then(function(response){
-     });
-
-    /*$.ajax({
-      url: API_URL,
-      type: 'POST',
-      mode: "cors",
-      dataType: "jsonp",
-      contentType: "application/json",
-      data: JSON.stringify(this.state.obj), // { "name": "react" },
-      success: function() { console.log("boom"); },
-      error: function (jqXHR, status) {
-        console.log(jqXHR);
-      }
-    });*/
-
-    // var settings = {
-    //   "async": true,
-    //   "crossDomain": true,
-    //   "url": API_URL,
-    //   "method": "POST",
-    //   "dataType" : "jsonp",
-    //   "headers": {
-    //     // "Acces-Control-Allow-Origin": "*",
-    //     "content-type":"application/json"
-    //   },
-    //   "data": this.state.obj
-    // }
-    // $.ajax(settings).done(function (response) {
-    //   console.log(response);
-    // });
+      mode: 'no-cors',
+      method: 'POST',
+      headers :{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jsonobj)
+    })
   }
 
   render() {
