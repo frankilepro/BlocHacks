@@ -1,5 +1,8 @@
 import React from "react";
 
+// const API_URL = 'http://teamguenonwebapi.azurewebsites.net/api/todos';
+const API_URL = 'http://localhost:59118/api/todos';
+
 export default class Data extends React.Component {
   constructor() {
     super();
@@ -12,7 +15,7 @@ export default class Data extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://teamguenonwebapi.azurewebsites.net/api/todos')
+    fetch(API_URL)
     .then(function(response){
       return response.json();
     })
@@ -42,34 +45,43 @@ export default class Data extends React.Component {
     this.state.obj.name = $('#input-name').val();
     console.log(this.state.obj);
 
-    /*fetch("http://teamguenonwebapi.azurewebsites.net/api/todos", {
-      method:"post",
-      "crossDomain": true,
-      header : {
-        'Accept': 'application/json, text/plain',
-        'Content-Type': 'application/json',
-        "Acces-Control-Allow-Origin": "*"
-      },
-      data: this.state.obj
-    });*/
+    // fetch(API_URL, {
+    //   method:"post",
+    //   header : {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: this.state.obj
+    // });
 
-
-
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "http://teamguenonwebapi.azurewebsites.net/api/todos",
-      "method": "POST",
-      "dataType" : "json",
-      "headers": {
-        "Acces-Control-Allow-Origin": "*",
-        "content-type":"application/json"
-      },
-      "data": this.state.obj
-    }
-    $.ajax(settings).done(function (response) {
-      console.log(response);
+    $.ajax({
+      url: API_URL,
+      type: 'POST',
+      mode: "cors",
+      dataType: "jsonp",
+      contentType: "application/json",
+      data: JSON.stringify(this.state.obj), // { "name": "react" },
+      success: function() { console.log("boom"); },
+      error: function (jqXHR, status) {
+        console.log(jqXHR);
+      }
     });
+
+    // var settings = {
+    //   "async": true,
+    //   "crossDomain": true,
+    //   "url": API_URL,
+    //   "method": "POST",
+    //   "dataType" : "jsonp",
+    //   "headers": {
+    //     // "Acces-Control-Allow-Origin": "*",
+    //     "content-type":"application/json"
+    //   },
+    //   "data": this.state.obj
+    // }
+    // $.ajax(settings).done(function (response) {
+    //   console.log(response);
+    // });
   }
 
   render() {

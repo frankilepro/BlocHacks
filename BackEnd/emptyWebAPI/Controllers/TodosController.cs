@@ -4,11 +4,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TeamGuenonWebApi.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace TeamGuenonWebApi.Controllers
 {
     [Produces("application/json")]
     [Route("api/Todos")]
+    //[EnableCors("AllowSpecificOrigin")]
     public class TodosController : ControllerBase
     {
         private readonly TeamGuenonContext _context;
