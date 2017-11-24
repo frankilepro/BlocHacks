@@ -18,10 +18,6 @@ export default class Data extends React.Component {
     })
     .then(function(json){
       console.log(json);
-      /*let names = "";
-      for(var i = 0; i < json.length; i++){
-        names = names + json[i].name + ", ";
-      }*/
       this.setState({
         data: json
       })
@@ -61,12 +57,7 @@ export default class Data extends React.Component {
       console.log(response);
     });
 
-    /*var formd = new FormData();
-    formd.append("json", JSON.stringify(jsonobj));
-    fetch(API_URL, {
-      method: 'POST',
-      body: JSON.stringify(jsonobj)
-    })*/
+    location.reload();
   }
 
   render() {
