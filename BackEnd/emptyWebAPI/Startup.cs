@@ -30,7 +30,7 @@ namespace TeamGuenonWebApi
             {
                 options.AddPolicy("AllowSpecificOrigin",
                     builder => builder.WithOrigins(SITE_URL, LOCAL_URL)
-                    .AllowAnyOrigin().AllowAnyMethod().AllowAnyMethod().AllowCredentials());
+                    .AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             });
             services.Configure<MvcOptions>(options =>
             {

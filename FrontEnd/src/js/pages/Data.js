@@ -1,7 +1,7 @@
 import React from "react";
 
-const API_URL = 'https://teamguenonwebapi.azurewebsites.net/api/todos';
-//const API_URL = 'http://localhost:59118/api/todos';
+//const API_URL = 'https://teamguenonwebapi.azurewebsites.net/api/todos';
+const API_URL = 'http://localhost:59118/api/todos';
 
 export default class Data extends React.Component {
   constructor() {
@@ -46,16 +46,27 @@ export default class Data extends React.Component {
 
     console.log(JSON.stringify(jsonobj));
 
-
-     fetch(API_URL, {
-      mode: 'no-cors',
-      method: 'POST',
-      headers :{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": API_URL,
+      "method": "POST",
+      "headers": {
+        "content-type": "application/json"
       },
+      "data": JSON.stringify(jsonobj)
+    }
+    
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+
+    /*var formd = new FormData();
+    formd.append("json", JSON.stringify(jsonobj));
+    fetch(API_URL, {
+      method: 'POST',
       body: JSON.stringify(jsonobj)
-    })
+    })*/
   }
 
   render() {
