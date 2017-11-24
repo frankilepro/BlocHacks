@@ -32,7 +32,7 @@ module.exports = {
     ]
   },
   output: {
-    filename: "/client.min.js"
+    filename: "./src/client.min.js"
   },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),

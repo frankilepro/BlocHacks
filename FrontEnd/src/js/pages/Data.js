@@ -1,6 +1,6 @@
 import React from "react";
 
-const API_URL = 'http://teamguenonwebapi.azurewebsites.net/api/todos';
+const API_URL = 'https://teamguenonwebapi.azurewebsites.net/api/todos';
 //const API_URL = 'http://localhost:59118/api/todos';
 
 export default class Data extends React.Component {
