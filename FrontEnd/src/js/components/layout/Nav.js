@@ -23,9 +23,10 @@ export default class Nav extends React.Component {
     const mapsClass = location.pathname.match(/^\/maps/) ? "active" : "";
     const refugeFormClass = location.pathname.match(/^\/refugeForm/) ? "active" : "";
     const centerFormClass = location.pathname.match(/^\/centerForm/) ? "active" : "";
+    const refugeeProfileClass = location.pathname.match(/^\/refugeeprofile/) ? "active" : "";
 
     return (
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -60,6 +61,11 @@ export default class Nav extends React.Component {
             <li class="centerFormClass">
                 <Link to='centerForm'>
                     <span class='glyphicon glyphicon-globe'></span> centerForm
+                </Link>
+            </li>
+            <li class="refugeeProfileClass">
+                <Link to='refugeeprofile'>
+                    <span class='glyphicon glyphicon-globe'></span> refugeeProfile
                 </Link>
             </li>
           </ul>

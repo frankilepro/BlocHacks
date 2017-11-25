@@ -1,14 +1,34 @@
 #map {
-    height:300px;
+    height:250px;
     width:100%;
 }
+
+
+#signin {
+	height:200px;
+	border-style:solid;
+	border-color: black;
+	border-width: 3px;
+	border-radius: 20px;
+}
+
+.brdright {
+	border-right: 1px solid #DDDDDD;
+}
+
+.info {
+	padding-bottom: 10px;
+}
+
+
+
+/* POUR NAVBAR */
 
 .navbar-collapse.in {
     overflow: hidden;
     max-height: none;
     height: auto;
 }
-
 /* Style barre de navigation */
 .navbar-default {
 	background-color: #4285f4;
@@ -25,12 +45,10 @@
 	font-weight: bold;
 	background: #125bd1;
 }
-
 #no-hover:hover,
 #no-hover:focus {
 	background-color: transparent;
 }
-
 /* Style bouton langue */
 .navbar-default .navbar-nav > li > a {
 	color: white;
@@ -52,12 +70,4 @@
 .navbar-default .navbar-nav > .active > a:focus {
 	color: white;
 	background: #125bd1;
-}
-
-#signin {
-	height:200px;
-	border-style:solid;
-	border-color: black;
-	border-width: 3px;
-	border-radius: 20px;
 }
