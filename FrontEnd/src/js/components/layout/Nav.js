@@ -21,6 +21,8 @@ export default class Nav extends React.Component {
     const featuredClass = location.pathname === "/" ? "active" : "";
     const dataClass = location.pathname.match(/^\/data/) ? "active" : "";
     const mapsClass = location.pathname.match(/^\/maps/) ? "active" : "";
+    const refugeFormClass = location.pathname.match(/^\/refugeForm/) ? "active" : "";
+    const centerFormClass = location.pathname.match(/^\/centerForm/) ? "active" : "";
 
     return (
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -48,6 +50,16 @@ export default class Nav extends React.Component {
             <li class="mapsClass">
                 <Link to='maps'>
                     <span class='glyphicon glyphicon-globe'></span> Maps
+                </Link>
+            </li>
+            <li class="refugeFormClass">
+                <Link to='refugeForm'>
+                    <span class='glyphicon glyphicon-globe'></span> refugeForm
+                </Link>
+            </li>
+            <li class="centerFormClass">
+                <Link to='centerForm'>
+                    <span class='glyphicon glyphicon-globe'></span> centerForm
                 </Link>
             </li>
           </ul>
