@@ -6,6 +6,11 @@ export default class SignIn extends React.Component {
         return (
             
             <div class="jumbotron jumbotron-background">
+             <Link to="/centerformpage">
+                <div style={{float:"right", marginRight:"10px"}} className="signIn">
+                    <div className="verticalAlign">Register a Center</div>
+                </div>
+            </Link>
             <div class="container">
                 <div>
                 <h1 className="signInHeader mg-top-big">Welcome to Canada</h1>
