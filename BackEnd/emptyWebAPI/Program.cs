@@ -3,8 +3,6 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
-using TeamGuenonWebApi.Data;
-using TeamGuenonWebApi.Models;
 
 namespace TeamGuenonWebApi
 {

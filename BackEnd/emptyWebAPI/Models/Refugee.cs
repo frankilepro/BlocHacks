@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace TeamGuenonWebApi.Models
 {
-    public class Refugee
+    public partial class Refugee
     {
         public Refugee()
         {
@@ -14,7 +13,6 @@ namespace TeamGuenonWebApi.Models
             Phone = new HashSet<Phone>();
         }
 
-        [Key]
         public int RefugeeId { get; set; }
         public int CentreId { get; set; }
         public int FamilyId { get; set; }
@@ -27,10 +25,8 @@ namespace TeamGuenonWebApi.Models
         public DateTime DateOfBirth { get; set; }
         public DateTime? DateOfDeath { get; set; }
 
-
         public Centre Centre { get; set; }
-        public Family Family { get; set; }
-        public IEnumerable<Address> Address { get; set; }
+        public ICollection<Address> Address { get; set; }
         public ICollection<Documents> Documents { get; set; }
         public ICollection<Email> Email { get; set; }
         public ICollection<Phone> Phone { get; set; }
