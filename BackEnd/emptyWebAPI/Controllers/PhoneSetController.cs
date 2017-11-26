@@ -49,7 +49,7 @@ namespace TeamGuenonWebApi.Controllers
 
         // PUT: api/PhoneSet/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPhone([FromRoute] int id, [FromBody] Phone phone)
+        public IActionResult PutPhone([FromRoute] int id, [FromBody] Phone phone)
         {
             return BadRequest("Not implemented");
         }
