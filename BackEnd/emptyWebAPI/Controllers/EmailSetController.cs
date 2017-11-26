@@ -49,38 +49,9 @@ namespace TeamGuenonWebApi.Controllers
 
         // PUT: api/EmailSet/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmail([FromRoute] int id, [FromBody] Email email)
+        public IActionResult PutEmail([FromRoute] int id, [FromBody] Email email)
         {
-            bool valid = new EmailAddressAttribute().IsValid(email);
-            if (!ModelState.IsValid || !valid || email == null)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != email.EmailId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(email).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EmailExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return BadRequest("Not implemented");
         }
 
         // POST: api/EmailSet
@@ -92,8 +63,12 @@ namespace TeamGuenonWebApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            _context.Email.Add(email);
+            if(_context.Email.Any(x => x.EmailId == email.EmailId))
+            {
+                _context.Email.Update(email);
+            }
+            else
+                _context.Email.Add(email);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEmail", new { id = email.EmailId }, email);
