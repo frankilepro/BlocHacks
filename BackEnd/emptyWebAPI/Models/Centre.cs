@@ -17,7 +17,7 @@ namespace TeamGuenonWebApi.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public string Languages { get; set; }
-        public string PhoneNumer { get; set; }
+        public string PhoneNumber { get; set; }
 
         public ICollection<Address> Address { get; set; }
         public ICollection<Refugee> Refugee { get; set; }

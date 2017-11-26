@@ -50,7 +50,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDocuments([FromRoute] int id, [FromBody] Documents documents)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || documents.TypeOfDoc[0] != '.')
             {
                 return BadRequest(ModelState);
             }
@@ -85,7 +85,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostDocuments([FromBody] Documents documents)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || documents.TypeOfDoc[0] != '.')
             {
                 return BadRequest(ModelState);
             }

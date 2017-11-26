@@ -10,9 +10,7 @@ namespace TeamGuenonWebApi.Models
         public int AdressId { get; set; }
         public int? CentreId { get; set; }
         public int? RefugeeId { get; set; }
-        public int Number { get; set; }
-        public int? Appartment { get; set; }
-        public string Street { get; set; }
+        public string AdressFullName { get; set; }
         public string PostalCode { get; set; }
         public double Longitude { get; set; }
         public double Lattitude { get; set; }
