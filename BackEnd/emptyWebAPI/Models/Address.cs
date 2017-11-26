@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TeamGuenonWebApi.Models
 {
-    public partial class Address
+    public class Address
     {
+        [Key]
         public int AdressId { get; set; }
         public int? CentreId { get; set; }
         public int? RefugeeId { get; set; }

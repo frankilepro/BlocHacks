@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TeamGuenonWebApi.Models
 {
-    public partial class Centre
+    public class Centre
     {
         public Centre()
         {
@@ -11,6 +12,7 @@ namespace TeamGuenonWebApi.Models
             Refugee = new HashSet<Refugee>();
         }
 
+        [Key]
         public int CentreId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
