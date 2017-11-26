@@ -16,7 +16,7 @@ export default class SignInRefugee extends React.Component {
         fetch(API_URL_REFUGEE)
         .then(function(response){
             return response.json();
-        })
+        })  
         .then(function(json){
             user = json;
             console.log(user);

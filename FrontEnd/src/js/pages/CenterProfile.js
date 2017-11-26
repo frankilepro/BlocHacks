@@ -12,7 +12,8 @@ export default class CenterProfile extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            user: this.props.user
+            user: this.props.user,
+            data: {}
         }
     }
 
@@ -29,19 +30,40 @@ export default class CenterProfile extends React.Component {
                 map:map
             });
         });
+        fetch("http://teamguenonwebapi.azurewebsites.net/api/centreset/"+center.centreId)
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(json){
+            console.log(json);
+            this.setState({
+                data: json.refugee
+            })
+        }.bind(this))
+
     }
 
     showRefugees() {
         let rows = [];
-        for(var i = 0; i < center.refugee.length; i++){
-          let theName =center.refugee[i].firstName;
-          let theId =  center.refugee[i].id;
-          if(!theId){
-              theId = "N/D"
-          }
-          rows.push(<tr> <td>{theName}</td> <td>{theId}</td></tr>);
+        for(var i = 0;i<this.state.data.length;i++){
+            rows.push( 
+                <tr>
+                    <td>{this.state.data[i].firstName}</td>
+                    <td>{this.state.data[i].secondName}</td>
+                    <td>{this.state.data[i].email[0].emailAddress  }</td>
+                    <td>{this.state.data[i].address[0].addressFullName}</td>
+                    <td>{this.state.data[i].phone[0].phoneNumber}</td>
+                </tr>
+            );
         }
-        return <div>{rows}</div>;
+        return <tbody>{rows}</tbody>
+        /*let data = this.state.data;
+        console.log(data);
+        for(var i = 0; i < data.length; i++){
+        let text = "name: " + data[i].firstName + ", id : ";
+        rows.push(<h1 key={i} style={{backgroundColor:"yellow"}}>{text}<br></br></h1>);
+        }
+        return <div>{rows}</div>;*/
     }
 
   render() {
@@ -78,8 +100,14 @@ export default class CenterProfile extends React.Component {
             <div class="col-sm-4"></div>
         </div>
         <div class="row"><div id="map"></div></div>
-        <table className="table table-hover">
-            <tr> <th>Name</th> <th>ID</th></tr>
+        <table class="table table-hover">
+        <thead><tr>
+            <th>Name</th>
+            <th>Second Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+        </tr></thead>
             {this.showRefugees()}
         </table>
     </div>

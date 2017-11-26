@@ -26,7 +26,7 @@ export default class RefugeeProfile extends React.Component {
                 var coordinates=new google.maps.LatLng(user.address[0].lattitude, user.address[0].longitude);
                 var map = new google.maps.Map(document.getElementById('map'), {
                     center: coordinates,
-                    zoom:15
+                    zoom:10
                 });
                 var marker1 = new google.maps.Marker({
                     position: coordinates,
