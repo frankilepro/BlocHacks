@@ -50,7 +50,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFamily([FromRoute] int id, [FromBody] Family family)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || family.FamilySize < 0 || family.FamilySize > 25)
             {
                 return BadRequest(ModelState);
             }
@@ -85,7 +85,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostFamily([FromBody] Family family)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || family.FamilySize < 0 || family.FamilySize > 25)
             {
                 return BadRequest(ModelState);
             }
