@@ -68,7 +68,7 @@ namespace TeamGuenonWebApi.Controllers
             }
 
             var tmpRef = _context.Refugee.Single(x => x.RefugeeId == id);
-
+            tmpRef = refugee;
             try
             {
                 await _context.SaveChangesAsync();

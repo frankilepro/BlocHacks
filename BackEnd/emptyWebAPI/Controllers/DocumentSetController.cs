@@ -48,49 +48,29 @@ namespace TeamGuenonWebApi.Controllers
 
         // PUT: api/DocumentSet/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDocuments([FromRoute] int id, [FromBody] Documents documents)
+        public IActionResult PutDocuments([FromRoute] int id, [FromBody] Documents documents)
         {
-            if (!ModelState.IsValid || documents.TypeOfDoc[0] != '.')
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != documents.DocumentId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(documents).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DocumentsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return BadRequest("Not implemented");
         }
 
         // POST: api/DocumentSet
         [HttpPost]
         public async Task<IActionResult> PostDocuments([FromBody] Documents documents)
         {
-            if (!ModelState.IsValid || documents.TypeOfDoc[0] != '.')
+            if (_context.Documents.Any(x => x.DocumentId == documents.DocumentId))
             {
-                return BadRequest(ModelState);
+                _context.Documents.Update(documents);
+            }
+            else
+            {
+                if (!ModelState.IsValid || documents.TypeOfDoc[0] != '.')
+                {
+                    return BadRequest(ModelState);
+                }
+
+                _context.Documents.Add(documents);
             }
 
-            _context.Documents.Add(documents);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetDocuments", new { id = documents.DocumentId }, documents);
