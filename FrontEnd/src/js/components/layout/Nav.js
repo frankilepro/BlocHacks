@@ -21,9 +21,12 @@ export default class Nav extends React.Component {
     const featuredClass = location.pathname === "/" ? "active" : "";
     const dataClass = location.pathname.match(/^\/data/) ? "active" : "";
     const mapsClass = location.pathname.match(/^\/maps/) ? "active" : "";
+    const refugeFormClass = location.pathname.match(/^\/refugeForm/) ? "active" : "";
+    const centerFormClass = location.pathname.match(/^\/centerForm/) ? "active" : "";
+    const refugeeProfileClass = location.pathname.match(/^\/refugeeprofile/) ? "active" : "";
 
     return (
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -48,6 +51,21 @@ export default class Nav extends React.Component {
             <li class="mapsClass">
                 <Link to='maps'>
                     <span class='glyphicon glyphicon-globe'></span> Maps
+                </Link>
+            </li>
+            <li class="refugeFormClass">
+                <Link to='refugeForm'>
+                    <span class='glyphicon glyphicon-globe'></span> refugeForm
+                </Link>
+            </li>
+            <li class="centerFormClass">
+                <Link to='centerForm'>
+                    <span class='glyphicon glyphicon-globe'></span> centerForm
+                </Link>
+            </li>
+            <li class="refugeeProfileClass">
+                <Link to='refugeeprofile'>
+                    <span class='glyphicon glyphicon-globe'></span> refugeeProfile
                 </Link>
             </li>
           </ul>
