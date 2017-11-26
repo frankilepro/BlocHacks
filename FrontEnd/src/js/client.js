@@ -7,7 +7,7 @@ import Data from "./pages/Data";
 import Featured from "./pages/Featured";
 import Layout from "./pages/Layout";
 import Maps from "./pages/Maps";
-import RefugeFormPage from "./pages/RefugeeFormPage"
+import RefugeeFormPage from "./pages/RefugeeFormPage"
 import CenterFormPage from "./pages/CenterFormPage"
 import RefugeeProfile from "./pages/RefugeeProfile";
 import CenterProfile from "./pages/CenterProfile";
@@ -22,7 +22,7 @@ ReactDOM.render(
       <IndexRoute component={Featured}></IndexRoute>
       <Route path="data" name="data" component={Data}></Route>
       <Route path="maps" name="maps" component={Maps}></Route>
-      <Route path="refugeFormPage" name="refugeFormPage" component={RefugeFormPage}></Route>
+      <Route path="refugeeFormPage" name="refugeeFormPage" component={RefugeeFormPage}></Route>
       <Route path="centerFormPage" name="centerFormPage" component={CenterFormPage}></Route>
       <Route path="refugeeprofile" name="refugeeprofile" component={RefugeeProfile}></Route>
       <Route path="centerprofile" name="centerprofile" component={CenterProfile}></Route>
