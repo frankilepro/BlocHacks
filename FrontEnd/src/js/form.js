@@ -32,12 +32,6 @@ const fields = [
   rules: 'required|string',
 },
 {
-  name: 'centre',
-  label: 'Center',
-  placeholder: 'ex : Centre de la nature',
-  rules: 'required|string',
-},  
-{
   name: 'dateOfBirth',
   label: 'Birthday',
   placeholder: 'ex : 1980-12-20',
@@ -101,9 +95,87 @@ const fields = [
 const hooks = {
 
  onSuccess(form) {
-   alert('Form is valid! Send the request here.');
+   alert('Informations are valid!');
    // get field values
-   console.log('Form Values!', form.values());
+
+
+
+   let refugee = {
+    firstName:form.values().firstName,
+    secondName:form.values().lastName,
+    languages:form.values().languages,
+    contryOfBirth: form.values().contryOfBirth,
+    cityOfBirth: form.values().cityOfBirth,
+    dateOfBirth: form.values().dateOfBirth
+   }
+   console.log(refugee);
+   let API_URL_REFUGEE = "http://teamguenonwebapi.azurewebsites.net/api/refugeeset";
+   var settings = {
+       "async": true,
+       "crossDomain": true,
+       "url": API_URL_REFUGEE,
+       "method": "POST",
+       "headers": {
+       "content-type": "application/json"
+       },
+       "data": JSON.stringify(refugee)
+   }
+
+   $.ajax(settings).done(function (response) {
+       console.log(response);
+       let API_URL_EMAIL = "http://teamguenonwebapi.azurewebsites.net/api/emailset";
+       let API_URL_ADDRESS = "http://teamguenonwebapi.azurewebsites.net/api/addressset";
+       let API_URL_PHONE = "http://teamguenonwebapi.azurewebsites.net/api/phoneset";
+    
+       console.log(response.refugeeId);
+    
+       settings = {
+        "url": API_URL_EMAIL,
+        "headers": {
+        "content-type": "application/json"
+        },
+        method:"POST",
+        "data": JSON.stringify({
+        emailAddress:form.values().email,
+        refugeeId:response.refugeeId
+      })
+       }
+       $.ajax(settings).done(function (response) {
+           console.log(response);
+       });
+       settings = {
+        "url": API_URL_ADDRESS,
+        "headers": {
+        "content-type": "application/json"
+        },
+        method:"POST",
+        "data": JSON.stringify({
+          addressFullName:form.values().adressStreet + " " + form.values().adressCity,
+          refugeeId:response.refugeeId
+        })
+       }
+       $.ajax(settings).done(function (response) {
+           console.log(response);
+       });
+       console.log(form.values().phoneNumber);
+       settings = {
+        "url": API_URL_PHONE,
+        "headers": {
+        "content-type": "application/json"
+        },
+        method:"POST",
+        "data": JSON.stringify({
+          phoneNumber:form.values().phoneNumber,
+          refugeeId:response.refugeeId
+        })
+       }
+       $.ajax(settings).done(function (response) {
+           console.log(response);
+       });
+       console.log('Form Values!', form.values());
+       window.location.href="#/signinrefugee";
+   });
+   
  },
 
  onError(form) {
