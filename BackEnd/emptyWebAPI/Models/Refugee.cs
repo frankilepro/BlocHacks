@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TeamGuenonWebApi.Models
 {
@@ -13,6 +14,7 @@ namespace TeamGuenonWebApi.Models
             Phone = new HashSet<Phone>();
         }
 
+        [Key]
         public int RefugeeId { get; set; }
         public int CentreId { get; set; }
         public int FamilyId { get; set; }

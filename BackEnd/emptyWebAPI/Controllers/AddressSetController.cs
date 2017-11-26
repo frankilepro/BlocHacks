@@ -25,7 +25,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpGet]
         public IEnumerable<Address> GetAddress()
         {
-            return _context.AddressSet;
+            return _context.Address;
         }
 
         // GET: api/AddressSet/5
@@ -37,7 +37,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var address = await _context.AddressSet.SingleOrDefaultAsync(m => m.AdressId == id);
+            var address = await _context.Address.SingleOrDefaultAsync(m => m.AdressId == id);
 
             if (address == null)
             {
@@ -98,7 +98,7 @@ namespace TeamGuenonWebApi.Controllers
             
             if (address.IsActive)
             {
-                foreach (var item in _context.AddressSet)
+                foreach (var item in _context.Address)
                 {
                     item.IsActive = false;
                 }
@@ -109,7 +109,7 @@ namespace TeamGuenonWebApi.Controllers
             address.Lattitude = point.Latitude;
             address.Longitude = point.Longitude;
 
-            _context.AddressSet.Add(address);
+            _context.Address.Add(address);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAddress", new { id = address.AdressId }, address);
@@ -124,13 +124,13 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var address = await _context.AddressSet.SingleOrDefaultAsync(m => m.AdressId == id);
+            var address = await _context.Address.SingleOrDefaultAsync(m => m.AdressId == id);
             if (address == null)
             {
                 return NotFound();
             }
 
-            _context.AddressSet.Remove(address);
+            _context.Address.Remove(address);
             await _context.SaveChangesAsync();
 
             return Ok(address);
@@ -138,7 +138,7 @@ namespace TeamGuenonWebApi.Controllers
 
         private bool AddressExists(int id)
         {
-            return _context.AddressSet.Any(e => e.AdressId == id);
+            return _context.Address.Any(e => e.AdressId == id);
         }
     }
 }

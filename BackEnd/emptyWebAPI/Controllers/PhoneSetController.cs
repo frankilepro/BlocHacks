@@ -25,7 +25,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpGet]
         public IEnumerable<Phone> GetPhone()
         {
-            return _context.PhoneSet;
+            return _context.Phone;
         }
 
         // GET: api/PhoneSet/5
@@ -37,7 +37,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var phone = await _context.PhoneSet.SingleOrDefaultAsync(m => m.PhoneId == id);
+            var phone = await _context.Phone.SingleOrDefaultAsync(m => m.PhoneId == id);
 
             if (phone == null)
             {
@@ -91,7 +91,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.PhoneSet.Add(phone);
+            _context.Phone.Add(phone);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPhone", new { id = phone.PhoneId }, phone);
@@ -106,13 +106,13 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var phone = await _context.PhoneSet.SingleOrDefaultAsync(m => m.PhoneId == id);
+            var phone = await _context.Phone.SingleOrDefaultAsync(m => m.PhoneId == id);
             if (phone == null)
             {
                 return NotFound();
             }
 
-            _context.PhoneSet.Remove(phone);
+            _context.Phone.Remove(phone);
             await _context.SaveChangesAsync();
 
             return Ok(phone);
@@ -120,7 +120,7 @@ namespace TeamGuenonWebApi.Controllers
 
         private bool PhoneExists(int id)
         {
-            return _context.PhoneSet.Any(e => e.PhoneId == id);
+            return _context.Phone.Any(e => e.PhoneId == id);
         }
     }
 }

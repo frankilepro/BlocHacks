@@ -26,7 +26,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpGet]
         public IEnumerable<Centre> GetCentre()
         {
-            return _context.CentreSet;
+            return _context.Centre;
         }
 
         // GET: api/CentreSet/5
@@ -38,7 +38,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var centre = await _context.CentreSet.SingleOrDefaultAsync(m => m.CentreId == id);
+            var centre = await _context.Centre.SingleOrDefaultAsync(m => m.CentreId == id);
 
             if (centre == null)
             {
@@ -94,13 +94,13 @@ namespace TeamGuenonWebApi.Controllers
         public async Task<IActionResult> PostCentre([FromBody] Centre centre)
         {
             bool valid = new EmailAddressAttribute().IsValid(centre.Email);
-            if (!ModelState.IsValid || !valid || centre.Email == null
-                || centre.PhoneNumer.Count(x => char.IsNumber(x)) > 15 || !(Regex.Match(centre.PhoneNumer, @"^(\+[0-9]{9})$").Success))
+            if (!ModelState.IsValid/* || !valid || centre.Email == null
+                || centre.PhoneNumer.Count(x => char.IsNumber(x)) > 15 || !(Regex.Match(centre.PhoneNumer, @"^(\+[0-9]{9})$").Success)*/)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.CentreSet.Add(centre);
+            _context.Centre.Add(centre);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCentre", new { id = centre.CentreId }, centre);
@@ -115,13 +115,13 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var centre = await _context.CentreSet.SingleOrDefaultAsync(m => m.CentreId == id);
+            var centre = await _context.Centre.SingleOrDefaultAsync(m => m.CentreId == id);
             if (centre == null)
             {
                 return NotFound();
             }
 
-            _context.CentreSet.Remove(centre);
+            _context.Centre.Remove(centre);
             await _context.SaveChangesAsync();
 
             return Ok(centre);
@@ -129,7 +129,7 @@ namespace TeamGuenonWebApi.Controllers
 
         private bool CentreExists(int id)
         {
-            return _context.CentreSet.Any(e => e.CentreId == id);
+            return _context.Centre.Any(e => e.CentreId == id);
         }
     }
 }
