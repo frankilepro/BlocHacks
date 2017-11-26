@@ -98,10 +98,12 @@ namespace TeamGuenonWebApi.Controllers
             
             if (address.IsActive)
             {
-                foreach (var item in _context.Address)
-                {
-                    item.IsActive = false;
-                }
+                await _context.Address.ForEachAsync(x => x.IsActive = true);
+                //foreach (var item in _context.Address)
+                //{
+                //    item.IsActive = false;
+                //}
+                await _context.SaveChangesAsync();
             }
             var locationService = new GoogleLocationService();
             var point = locationService.GetLatLongFromAddress(address.AddressFullName);
