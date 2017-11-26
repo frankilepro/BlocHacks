@@ -16,6 +16,6 @@ namespace TeamGuenonWebApi.Models
         public DateTime? ArrivedDate { get; set; }
         public DateTime? DepartDate { get; set; }
 
-        public Refugee Refugee { get; set; }
+        //public Refugee Refugee { get; set; }
     }
 }

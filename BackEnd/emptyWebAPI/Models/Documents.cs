@@ -12,6 +12,6 @@ namespace TeamGuenonWebApi.Models
         public string BinDoc { get; set; }
         public string TypeOfDoc { get; set; }
 
-        public Refugee Refugee { get; set; }
+        //public Refugee Refugee { get; set; }
     }
 }

@@ -12,6 +12,6 @@ namespace TeamGuenonWebApi.Models
         public string EmailAddress { get; set; }
         public bool IsActive { get; set; }
 
-        public Refugee Refugee { get; set; }
+        //public Refugee Refugee { get; set; }
     }
 }
