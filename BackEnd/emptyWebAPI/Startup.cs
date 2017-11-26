@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
+using TeamGuenonWebApi.Models;
 
 namespace TeamGuenonWebApi
 {
@@ -24,7 +25,7 @@ namespace TeamGuenonWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddCors();
-            //services.AddDbContext<TeamGuenonContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<TeamGuenonContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",

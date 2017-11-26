@@ -51,7 +51,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAddress([FromRoute] int id, [FromBody] Address address)
         {
-            if (!ModelState.IsValid || address.AdressFullName.Any(char.IsDigit))
+            if (!ModelState.IsValid || address.AddressFullName.Any(char.IsDigit))
             {
                 return BadRequest(ModelState);
             }
@@ -61,7 +61,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest();
             }
             var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(address.AdressFullName);
+            var point = locationService.GetLatLongFromAddress(address.AddressFullName);
 
             address.Lattitude = point.Latitude;
             address.Longitude = point.Longitude;
@@ -91,7 +91,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostAddress([FromBody] Address address)
         {
-            if (!ModelState.IsValid || address.AdressFullName.Any(char.IsDigit))
+            if (!ModelState.IsValid || address.AddressFullName.Any(char.IsDigit))
             {
                 return BadRequest(ModelState);
             }
@@ -104,7 +104,7 @@ namespace TeamGuenonWebApi.Controllers
                 }
             }
             var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(address.AdressFullName);
+            var point = locationService.GetLatLongFromAddress(address.AddressFullName);
 
             address.Lattitude = point.Latitude;
             address.Longitude = point.Longitude;
