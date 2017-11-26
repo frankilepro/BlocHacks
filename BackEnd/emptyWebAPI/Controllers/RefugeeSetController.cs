@@ -68,12 +68,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != refugee.RefugeeId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(refugee).State = EntityState.Modified;
+            var tmpRef = _context.Refugee.Single(x => x.RefugeeId == id);
 
             try
             {
