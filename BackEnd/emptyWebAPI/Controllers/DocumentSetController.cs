@@ -64,16 +64,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            using (FileStream fs = new FileStream(@"C:\Users\yoang\Desktop\pia21970-opt.jpg", FileMode.Open))
-            {
-                using (BinaryReader br = new BinaryReader(fs))
-
-                {
-                    byte[] bin = br.ReadBytes(Convert.ToInt32(fs.Length));
-                    documents.BinDoc = Convert.ToBase64String(bin);
-                }
-            }
-
+            
 
             if (_context.Documents.Any(x => x.DocumentId == documents.DocumentId))
             {
