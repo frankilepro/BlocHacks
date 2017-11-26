@@ -24,6 +24,7 @@ export default class Nav extends React.Component {
     const refugeFormPageClass = location.pathname.match(/^\/refugeFormPage/) ? "active" : "";
     const centerFormPageClass = location.pathname.match(/^\/centerFormPage/) ? "active" : "";
     const refugeeProfileClass = location.pathname.match(/^\/refugeeprofile/) ? "active" : "";
+    const centerProfileClass = location.pathname.match(/^\/centerprofile/) ? "active" : "";
 
     return (
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -66,6 +67,11 @@ export default class Nav extends React.Component {
             <li class="refugeeProfileClass">
                 <Link to='refugeeprofile'>
                     <span class='glyphicon glyphicon-globe'></span> refugeeProfile
+                </Link>
+            </li>
+            <li class="centerProfileClass">
+                <Link to='centerprofile'>
+                    <span class='glyphicon glyphicon-globe'></span> centerprofile
                 </Link>
             </li>
           </ul>

@@ -9,7 +9,7 @@ namespace TeamGuenonWebApi.Models
         [Key]
         public int PhoneId { get; set; }
         public int RefugeeId { get; set; }
-        public string Phone1 { get; set; }
+        public string PhoneNumer { get; set; }
         public string Type { get; set; }
         public bool IsActive { get; set; }
 
