@@ -49,14 +49,17 @@ namespace TeamGuenonWebApi.Controllers
             return Ok(centre);
         }
 
+        private double Oli(double longitude, double longitute, double lattitude1, double lattitude2)
+        {
+            throw new NotImplementedException();
+            return 0.0;
+        }
+
         // PUT: api/CentreSet/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCentre([FromRoute] int id, [FromBody] Centre centre)
         {
-
-
             bool valid = new EmailAddressAttribute().IsValid(centre.Email);
-
 
             if (!ModelState.IsValid || !valid || centre.Email == null 
                 || centre.PhoneNumer.Count(x => char.IsNumber(x)) > 15)
