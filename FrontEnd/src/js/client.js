@@ -10,6 +10,7 @@ import Maps from "./pages/Maps";
 import RefugeForm from "./pages/RefugeForm"
 import CenterForm from "./pages/CenterForm"
 import RefugeeProfile from "./pages/RefugeeProfile";
+import CenterProfile from "./pages/CenterProfile";
 
 const app = document.getElementById('app');
 
@@ -22,6 +23,7 @@ ReactDOM.render(
       <Route path="refugeForm" name="refugeForm" component={RefugeForm}></Route>
       <Route path="centerForm" name="centerForm" component={CenterForm}></Route>
       <Route path="refugeeprofile" name="refugeeprofile" component={RefugeeProfile}></Route>
+      <Route path="centerprofile" name="centerprofile" component={CenterProfile}></Route>
     </Route>
   </Router>,
 app);
