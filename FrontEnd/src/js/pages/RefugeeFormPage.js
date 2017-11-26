@@ -10,7 +10,7 @@ export default class refugeform extends React.Component {
           <div class="col-md-3"></div>
           <div class="col-md-6">
             <h1>Create your Profile</h1>
-            <RefugeeForm form={form} />  
+            <RefugeeForm form={form} />    
           </div>
           <div class="col-md-3"></div>
         </div>
