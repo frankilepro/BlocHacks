@@ -45,7 +45,7 @@ export default class SignInRefugee extends React.Component {
                 </div>
             </form>
             <button class="btn btn-default" id="redirect-refugee" >
-                <Link to="/refugeeprofile">GO</Link>
+                <Link to="/refugeeprofile"></Link>
             </button>
             </div>
         <div class="col-sm-4"></div>
