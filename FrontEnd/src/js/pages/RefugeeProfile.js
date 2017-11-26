@@ -7,7 +7,8 @@ GoogleMapsLoader.REGION='CA';
 
 export default class RefugeeProfile extends React.Component {
     constructor() {
-        super();
+        super();    
+        this.update = this.update.bind(this);
         this.state = {
             modifying : false
         }
@@ -40,10 +41,19 @@ export default class RefugeeProfile extends React.Component {
     }
 
     update (){
-        console.log("sent");
+        let address = $('#input-address').val();
+        let email =  $('#input-email').val();
+        let phone =  $('#input-phone').val();
+        console.log(JSON.stringify({email:email, address:address, phone:phone}));
+        //post
+        this.modify();
     }
 
   render() {
+    let address = "(refugee address)";
+    let email = "(refugee email)";
+    let phone = "(refugee phone)";
+
     return (
     <div>
         <h1>(Refugee Name)</h1>
@@ -51,19 +61,21 @@ export default class RefugeeProfile extends React.Component {
         <br></br>
         <div class="row" style={{paddingBottom:"50px"}}>
             <div class="col-sm-6 brdright show-info">
-                <div class="info">Address : (boogie address)</div>
-                <div class="info">E-mail : (refugee email)</div>
-                <div class="info">Phone number : (refugee phone)</div>
+                <div class="info">Address : {address}</div>
+                <div class="info">E-mail : {email}</div>
+                <div class="info">Phone number : {phone}</div>
                 <br></br>
                 <button class="btn btn-default" onClick={this.modify}>Modify my informations</button>
             </div>
             <div class="col-sm-6 brdright modify-info">
-                <div class="info">Address : <input placeholder="(refugee address)"></input></div>
-                <div class="info">E-mail : <input placeholder="(refugee email)"></input></div>
-                <div class="info">Phone number : <input placeholder="(refugee number)"></input></div>
-                <br></br>
-                <button class="btn btn-default" onClick={this.modify}>Cancel</button>
-                <button class="btn btn-default" onClick={this.update}>Update</button>
+                <form>
+                    <div class="info">Address : <input class="form-control" id='input-address' defaultValue={address}></input></div>
+                    <div class="info">E-mail : <input class="form-control" id='input-email' defaultValue={email}></input></div>
+                    <div class="info">Phone number : <input class="form-control" id='input-phone' defaultValue={phone}></input></div>
+                    <br></br>
+                    <button class="btn btn-default" onClick={this.modify}>Cancel</button>
+                    <button class="btn btn-default" onClick={this.update}>Update</button>
+                </form>
             </div>
             <div class="col-sm-6">
                 <div class="info">Refugee center : (refugee center)</div>
