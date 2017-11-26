@@ -49,42 +49,9 @@ namespace TeamGuenonWebApi.Controllers
 
         // PUT: api/AddressSet/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAddress([FromRoute] int id, [FromBody] Address address)
+        public IActionResult PutAddress([FromRoute] int id, [FromBody] Address address)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != address.AdressId)
-            {
-                return BadRequest();
-            }
-            var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(address.AddressFullName);
-
-            address.Lattitude = point.Latitude;
-            address.Longitude = point.Longitude;
-
-            _context.Entry(address).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AddressExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return BadRequest("Not implemented");
         }
 
         // POST: api/AddressSet
@@ -98,7 +65,9 @@ namespace TeamGuenonWebApi.Controllers
             
             if (address.IsActive)
             {
-                await _context.Address.ForEachAsync(x => x.IsActive = true);
+
+                await _context.Address.ForEachAsync(x => x.IsActive = false);
+
             }
             var locationService = new GoogleLocationService();
             var point = locationService.GetLatLongFromAddress(address.AddressFullName);
@@ -106,7 +75,10 @@ namespace TeamGuenonWebApi.Controllers
             address.Lattitude = point.Latitude;
             address.Longitude = point.Longitude;
 
-            _context.Address.Add(address);
+            if (_context.Address.Any(x => x.AdressId == address.AdressId))
+                _context.Address.Update(address);
+            else
+                _context.Address.Add(address);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAddress", new { id = address.AdressId }, address);
