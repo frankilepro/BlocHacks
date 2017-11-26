@@ -6,9 +6,9 @@ export default class CenterFormPage extends React.Component {
      return (
       <div class="center-background">
       <div class="col-md-3"></div>
-      <div class="col-md-6">
-      <h1 className="bigHeader mg-top-big">Call this Number to Register Your Center !</h1>
-      <h1 className="bigHeader mg-top-big">514-846-0005</h1>
+      <div class="col-md-6 mg-top-big">
+      <p className="signInHeader">Call this Number to Register Your Center !</p>
+      <p className="signInHeader mg-top-big">514-846-0005</p>
       </div>
       <div class="col-md-3"></div>
     </div>
