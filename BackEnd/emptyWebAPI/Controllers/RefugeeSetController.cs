@@ -82,8 +82,16 @@ namespace TeamGuenonWebApi.Controllers
             {
                 _context.Refugee.Add(refugee);
             }
-            
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
 
             return CreatedAtAction("GetRefugee", new { id = refugee.RefugeeId }, refugee);
         }

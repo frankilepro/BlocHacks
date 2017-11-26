@@ -3,6 +3,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using TeamGuenonWebApi.Models;
 
 namespace TeamGuenonWebApi
 {
@@ -12,23 +13,28 @@ namespace TeamGuenonWebApi
         {
             var host = BuildWebHost(args);
 
-            // First DB load
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
                 {
                     //var context = services.GetRequiredService<TeamGuenonContext>();
-                    //context.Database.EnsureCreated();
-                    //context.Lolz.Add(new TestLol
+                    //foreach (var item in context.Centre)
                     //{
-                    //    Name = "allo",
-                    //    lols = new Dodo
+                    //    try
                     //    {
-                    //        Name = "allo",
-                    //        Number = 8
-                    //    },
-                    //});
+                    //        context.CentreLogin.Add(new CentreLogin
+                    //        {
+                    //            Username = item.CentreId.ToString(),
+                    //            Password = item.CentreId.ToString(),
+                    //            CentreId = item.CentreId
+                    //        });
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+
+                    //    }
+                    //}
                     //context.SaveChanges();
                 }
                 catch (Exception ex)

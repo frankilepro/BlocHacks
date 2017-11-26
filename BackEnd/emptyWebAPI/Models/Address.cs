@@ -8,7 +8,7 @@ namespace TeamGuenonWebApi.Models
     {
         [Key]
         public int AdressId { get; set; }
-        public int? RefugeeId { get; set; }
+        public int RefugeeId { get; set; }
         public string AddressFullName { get; set; }
         public double Lattitude { get; set; }
         public double Longitude { get; set; }

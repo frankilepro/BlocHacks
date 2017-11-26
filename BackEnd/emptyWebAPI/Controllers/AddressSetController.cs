@@ -65,9 +65,7 @@ namespace TeamGuenonWebApi.Controllers
             
             if (address.IsActive)
             {
-
                 await _context.Address.ForEachAsync(x => x.IsActive = false);
-
             }
             var locationService = new GoogleLocationService();
             var point = locationService.GetLatLongFromAddress(address.AddressFullName);
@@ -79,6 +77,11 @@ namespace TeamGuenonWebApi.Controllers
                 _context.Address.Update(address);
             else
                 _context.Address.Add(address);
+
+            await _context.SaveChangesAsync();
+
+            var refugee = _context.Refugee.Single(x => x.RefugeeId == address.RefugeeId);
+            refugee.CentreId = _context.Centre.OrderBy(x => CalculateDistance(address.Longitude, x.Longitute, address.Lattitude, x.Lattitude)).First().CentreId;
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAddress", new { id = address.AdressId }, address);
@@ -108,6 +111,16 @@ namespace TeamGuenonWebApi.Controllers
         private bool AddressExists(int id)
         {
             return _context.Address.Any(e => e.AdressId == id);
+        }
+
+        private double CalculateDistance(double lon1, double lon2, double lat1, double lat2)
+        {
+            const double EARTH_RADIUS = 6371; //KM
+            double dlon = lon2 - lon1;
+            double dlat = lat2 - lat1;
+            double a = Math.Pow((Math.Sin(dlat / 2)), 2) + Math.Cos(lat1) * Math.Cos(lat2) * Math.Pow((Math.Sin(dlon / 2)), 2);
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            return EARTH_RADIUS * c;
         }
     }
 }

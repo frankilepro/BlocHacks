@@ -55,7 +55,8 @@ namespace TeamGuenonWebApi.Controllers
         [HttpGet("closest/{RefugeeId}")]
         public IEnumerable<Centre> GetClosestCentres([FromRoute] int refugeeId)
         {
-            var address = _context.Address.SingleOrDefault(x => x.RefugeeId == refugeeId);
+            //var test = _context.Address.Where(x => x.RefugeeId == refugeeId);
+            var address = _context.Address.Where(x => x.RefugeeId == refugeeId).Last();
             return _context.Centre.OrderBy(x => CalculateDistance(address.Longitude, x.Longitute, address.Lattitude, x.Lattitude)).Take(3);
         }
 
@@ -120,6 +121,7 @@ namespace TeamGuenonWebApi.Controllers
         {
             return _context.Centre.Any(e => e.CentreId == id);
         }
+
         private double CalculateDistance(double lon1, double lon2, double lat1, double lat2)
         {
             const double EARTH_RADIUS = 6371; //KM
