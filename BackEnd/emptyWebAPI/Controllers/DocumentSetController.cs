@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TeamGuenonWebApi.Models;
+using System.IO;
 
 namespace TeamGuenonWebApi.Controllers
 {
@@ -57,16 +58,20 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostDocuments([FromBody] Documents documents)
         {
+
+            if (!ModelState.IsValid || documents.TypeOfDoc[0] != '.')
+            {
+                return BadRequest(ModelState);
+            }
+
+            
+
             if (_context.Documents.Any(x => x.DocumentId == documents.DocumentId))
             {
                 _context.Documents.Update(documents);
             }
             else
             {
-                if (!ModelState.IsValid || documents.TypeOfDoc[0] != '.')
-                {
-                    return BadRequest(ModelState);
-                }
 
                 _context.Documents.Add(documents);
             }
