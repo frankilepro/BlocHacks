@@ -28,7 +28,7 @@ export default class SignInRefugee extends React.Component {
             .then(function(json){
                 center = json;
                 console.log(center);
-                $('#redirect-refugee').show();
+                window.location.href = $('#redirect-refugee > a').attr('href');
             });
         });
 
@@ -44,7 +44,7 @@ export default class SignInRefugee extends React.Component {
                 <div onClick={this.submit}>asd
                 </div>
             </form>
-            <button id="redirect-refugee" >
+            <button class="btn btn-default" id="redirect-refugee" >
                 <Link to="/refugeeprofile">GO</Link>
             </button>
             </div>
