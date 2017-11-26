@@ -28,15 +28,28 @@ export default class SignInCenter extends React.Component {
 
     render() {
         return(
-        <div>
-            <form onSubmit={this.submit}>
-                <input id="id-center" placeholder="id"></input>
-                <div onClick={this.submit}>asd
+        <div  className="centerSignIn-background">
+            <div className="col-md-3 signInCenterSiders">
+                <Link to="/">
+                    <div className="back">
+                        <div className="centertext"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back</div>
+                    </div>
+                </Link>
+            </div>
+            <div className="col-md-6 signInCenter">
+                <div className="form-group">
+                    <form onSubmit={this.submit}>
+                        <p className="bigHeader">Center Sign In</p>
+                        <input id="id-center" placeholder="Id" class="form-control margin-bottom-sm"></input>
+                        <input id="center-password" type="password" placeholder="Password" class="form-control margin-bottom-sm"></input>
+                        <button type="button" class="btn btn-primary btn-lg" onClick={this.submit} >Connection</button>
+                    </form>
+                    <button class="btn btn-default" id="redirect-center" >
+                        <Link to="/centerprofile">_</Link>
+                    </button>
                 </div>
-            </form>
-            <button class="btn btn-default" id="redirect-center" >
-                <Link to="/centerprofile">GO</Link>
-            </button>
+            </div>
+            <div className="col-md-3 signInCenterSiders"></div>
         </div>
         );
     }
