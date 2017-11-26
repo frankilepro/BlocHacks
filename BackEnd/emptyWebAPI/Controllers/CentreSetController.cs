@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TeamGuenonWebApi.Models;
+using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace TeamGuenonWebApi.Controllers
 {
@@ -50,7 +52,13 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCentre([FromRoute] int id, [FromBody] Centre centre)
         {
-            if (!ModelState.IsValid)
+
+
+            bool valid = new EmailAddressAttribute().IsValid(centre.Email);
+
+
+            if (!ModelState.IsValid || !valid || centre.Email == null 
+                || centre.PhoneNumber.Count(x => char.IsNumber(x)) > 15 || !(Regex.Match(centre.PhoneNumber, @"^(\+[0-9]{9})$").Success))
             {
                 return BadRequest(ModelState);
             }
@@ -85,7 +93,9 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostCentre([FromBody] Centre centre)
         {
-            if (!ModelState.IsValid)
+            bool valid = new EmailAddressAttribute().IsValid(centre.Email);
+            if (!ModelState.IsValid || !valid || centre.Email == null
+                || centre.PhoneNumber.Count(x => char.IsNumber(x)) > 15 || !(Regex.Match(centre.PhoneNumber, @"^(\+[0-9]{9})$").Success))
             {
                 return BadRequest(ModelState);
             }

@@ -8,12 +8,12 @@ export default class SignIn extends React.Component {
             <h1 style={{textAlign:"center"}}>Sign in as :</h1>
             <div class="row">
                 <div class="col-sm-6">
-                    <Link to="/refugeform">
+                    <Link to="/refugeformpage">
                         <div id='signin'> Refugee </div>
                     </Link>
                 </div>
                 <div class="col-sm-6">
-                    <Link to="/refugeform">
+                    <Link to="/centerformpage">
                         <div id='signin'> Center </div>
                     </Link>
                 </div>

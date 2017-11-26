@@ -21,8 +21,8 @@ export default class Nav extends React.Component {
     const featuredClass = location.pathname === "/" ? "active" : "";
     const dataClass = location.pathname.match(/^\/data/) ? "active" : "";
     const mapsClass = location.pathname.match(/^\/maps/) ? "active" : "";
-    const refugeFormClass = location.pathname.match(/^\/refugeForm/) ? "active" : "";
-    const centerFormClass = location.pathname.match(/^\/centerForm/) ? "active" : "";
+    const refugeFormPageClass = location.pathname.match(/^\/refugeFormPage/) ? "active" : "";
+    const centerFormPageClass = location.pathname.match(/^\/centerFormPage/) ? "active" : "";
     const refugeeProfileClass = location.pathname.match(/^\/refugeeprofile/) ? "active" : "";
     const centerProfileClass = location.pathname.match(/^\/centerprofile/) ? "active" : "";
 
@@ -54,13 +54,13 @@ export default class Nav extends React.Component {
                     <span class='glyphicon glyphicon-globe'></span> Maps
                 </Link>
             </li>
-            <li class="refugeFormClass">
-                <Link to='refugeForm'>
+            <li class="refugeFormPageClass">
+                <Link to='refugeFormPage'>
                     <span class='glyphicon glyphicon-globe'></span> refugeForm
                 </Link>
             </li>
-            <li class="centerFormClass">
-                <Link to='centerForm'>
+            <li class="centerFormPageClass">
+                <Link to='centerFormPage'>
                     <span class='glyphicon glyphicon-globe'></span> centerForm
                 </Link>
             </li>
