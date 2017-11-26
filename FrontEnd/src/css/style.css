@@ -12,17 +12,63 @@ body{
 	margin-top: 100px;
 }
 
-.jumbotron-background{
-		background-image: url(https://images.unsplash.com/photo-1466201249030-41e3ad750419?auto=format&fit=crop&w=1950&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);
+.mg-bot-big{
+	margin-bottom: 150px;
+}
 
-		    /* Full height */
-			height: 750px !important; 
-			
-			/* Center and scale the image nicely */
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-			width: 100%;
+.signCenterRefugee{
+	border: 2px solid white;
+	text-decoration: none;
+	height: 67px;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+
+	-o-transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	/* ...and now for the proper property */
+	transition:.5s;
+}
+
+.signCenterRefugee:hover, .signCenterRefugee:active, .signCenterRefugee:link {
+	background: white;
+	color: #193446;
+}
+
+.back{
+	background: #193446;
+	height: 67px;
+	padding-top: 18px;
+	padding-bottom: 18px;
+	width: 50%;
+	color: white;
+	font-size: 15px;
+	margin-top: 100px;
+	max-width: 200px
+}
+
+.centertext{
+	text-align: center;
+}
+
+.dark-overlay{
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.jumbotron-background{
+		background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images.unsplash.com/photo-1466201249030-41e3ad750419?auto=format&fit=crop&w=1950&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);
+
+		/* Full height */
+		height: 750px !important; 
+		
+		/* Center and scale the image nicely */
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		width: 100%;
 }
 
 .verticalAlign{
@@ -30,9 +76,8 @@ body{
 }
 
 .center-background{
-	background-image: url(https://images.unsplash.com/photo-1423589989400-cc0270157ed0?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);
-	
-				/* Full height */
+	background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images.unsplash.com/photo-1466201249030-41e3ad750419?auto=format&fit=crop&w=1950&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);					
+	/* Full height */
 	height: 750px !important; 
 				
 				/* Center and scale the image nicely */
@@ -46,9 +91,53 @@ body{
     transition: background 300ms ease-in 200ms;
 }
 
+.centerSignIn-background{
+	background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images.unsplash.com/photo-1466201249030-41e3ad750419?auto=format&fit=crop&w=1950&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);			
+	/* Full height */
+	height: 750px !important; 
+				
+				/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	-webkit-transition: background 300ms ease-in 200ms; /* property duration timing-function delay */
+    -moz-transition: background 300ms ease-in 200ms;
+    -o-transition: background 300ms ease-in 200ms;
+    transition: background 300ms ease-in 200ms;
+}
+
+.signUpCenter{
+	border-radius: 5px;
+	padding: 100px 50px;
+	background: rgba(0, 0, 0, 0.6);	
+}
+
+.signInCenter{
+	border-radius: 5px;	
+	margin-top:100px;
+	padding: 100px 150px;
+	background: rgba(0, 0, 0, 0.6);	
+}
+
+@media only screen and (max-device-width: 480px) {
+	.signInCenter{
+		margin-top:100px;
+		padding: 100px 40px;
+	}
+
+	.signUpCenter{
+		padding: 100px 40px;
+	}		
+}
+
+.margin-bottom-sm{
+	margin-bottom: 20px;
+}
+
 .bigHeader{
 	text-align: center;
-	color: black !important;
+	color: white !important;
 	font-size: 73px !important;
 	font-weight: 500 !important;
 	font-family: 'Roboto', sans-serif !important;
@@ -92,7 +181,7 @@ body{
 }
 .signIn:hover, .signIn:active, .signIn:link {
 	background: white;
-	color: black;
+	color: #193446;
 }
 
 @media only screen and (max-device-width: 480px) {
@@ -172,4 +261,19 @@ small{
  
 .invalid{
     border:1px solid #ff0000
+}
+
+.footer{
+	background: #193446;
+}	
+
+.footer-padding{
+	padding: 50px;
+}
+
+.footer-content{
+	font-size: 14px;
+	color: white;
+	font-weight: 400;
+	font-family: 'Roboto', sans-serif !important;
 }

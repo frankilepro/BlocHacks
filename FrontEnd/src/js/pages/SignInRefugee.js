@@ -36,20 +36,30 @@ export default class SignInRefugee extends React.Component {
 
     render() {
         return(
-        <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
+    <div  className="centerSignIn-background">
+    <div className="col-md-3 signInCenterSiders">
+        <Link to="/">
+            <div className="back">
+                <div className="centertext"> <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back</div>
+            </div>
+        </Link>
+    </div>
+    <div className="col-md-6 signInCenter">
+        <div className="form-group">
             <form onSubmit={this.submit}>
-                <input id="id-refugee" placeholder="id"></input>
-                <div onClick={this.submit}>asd
-                </div>
+                <p className="bigHeader">Sign In</p>
+                <input id="id-refugee" type="text" placeholder="Username" class="form-control margin-bottom-sm"></input>
+                <input id="refugee-password" type="password" placeholder="Password" class="form-control margin-bottom-sm"></input>
+                <button type="button" class="btn btn-primary btn-lg" onClick={this.submit} >Sign In</button>
             </form>
             <button class="btn btn-default" id="redirect-refugee" >
-                <Link to="/refugeeprofile">GO</Link>
+                <Link to="/refugeeprofile"></Link>
             </button>
-            </div>
-        <div class="col-sm-4"></div>
         </div>
+    </div>
+    <div className="col-md-3 signInCenterSiders"></div>
+    </div>
+
         );
     }
 }

@@ -18,24 +18,24 @@ namespace TeamGuenonWebApi
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<TeamGuenonContext>();
-                    foreach (var item in context.Centre)
-                    {
-                        try
-                        {
-                            context.CentreLogin.Add(new CentreLogin
-                            {
-                                Username = item.CentreId.ToString(),
-                                Password = item.CentreId.ToString(),
-                                CentreId = item.CentreId
-                            });
-                        }
-                        catch (Exception ex)
-                        {
+                    //var context = services.GetRequiredService<TeamGuenonContext>();
+                    //foreach (var item in context.Centre)
+                    //{
+                    //    try
+                    //    {
+                    //        context.CentreLogin.Add(new CentreLogin
+                    //        {
+                    //            Username = item.CentreId.ToString(),
+                    //            Password = item.CentreId.ToString(),
+                    //            CentreId = item.CentreId
+                    //        });
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
 
-                        }
-                    }
-                    context.SaveChanges();
+                    //    }
+                    //}
+                    //context.SaveChanges();
                 }
                 catch (Exception ex)
                 {

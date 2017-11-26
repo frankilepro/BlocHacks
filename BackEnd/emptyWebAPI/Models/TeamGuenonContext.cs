@@ -16,21 +16,6 @@ namespace TeamGuenonWebApi.Models
         public virtual DbSet<Family> Family { get; set; }
         public virtual DbSet<Phone> Phone { get; set; }
         public virtual DbSet<Refugee> Refugee { get; set; }
-        public virtual DbSet<RefugeeLogin> RefugeeLogin { get; set; }
-        public virtual DbSet<CentreLogin> CentreLogin { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<RefugeeLogin>().HasKey(u => new
-            {
-                u.Username,
-                u.Password
-            });
-            builder.Entity<CentreLogin>().HasKey(u => new
-            {
-                u.Username,
-                u.Password
-            });
-        }
     }
 }
