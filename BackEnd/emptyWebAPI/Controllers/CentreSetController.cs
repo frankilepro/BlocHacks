@@ -26,7 +26,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpGet]
         public IEnumerable<Centre> GetCentre()
         {
-            return _context.Centre;
+            return _context.CentreSet;
         }
 
         // GET: api/CentreSet/5
@@ -38,7 +38,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var centre = await _context.Centre.SingleOrDefaultAsync(m => m.CentreId == id);
+            var centre = await _context.CentreSet.SingleOrDefaultAsync(m => m.CentreId == id);
 
             if (centre == null)
             {
@@ -100,7 +100,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Centre.Add(centre);
+            _context.CentreSet.Add(centre);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCentre", new { id = centre.CentreId }, centre);
@@ -115,13 +115,13 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var centre = await _context.Centre.SingleOrDefaultAsync(m => m.CentreId == id);
+            var centre = await _context.CentreSet.SingleOrDefaultAsync(m => m.CentreId == id);
             if (centre == null)
             {
                 return NotFound();
             }
 
-            _context.Centre.Remove(centre);
+            _context.CentreSet.Remove(centre);
             await _context.SaveChangesAsync();
 
             return Ok(centre);
@@ -129,7 +129,7 @@ namespace TeamGuenonWebApi.Controllers
 
         private bool CentreExists(int id)
         {
-            return _context.Centre.Any(e => e.CentreId == id);
+            return _context.CentreSet.Any(e => e.CentreId == id);
         }
     }
 }

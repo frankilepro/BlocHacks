@@ -25,7 +25,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpGet]
         public IEnumerable<Email> GetEmail()
         {
-            return _context.Email;
+            return _context.EmailSet;
         }
 
         // GET: api/EmailSet/5
@@ -37,7 +37,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var email = await _context.Email.SingleOrDefaultAsync(m => m.EmailId == id);
+            var email = await _context.EmailSet.SingleOrDefaultAsync(m => m.EmailId == id);
 
             if (email == null)
             {
@@ -93,7 +93,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Email.Add(email);
+            _context.EmailSet.Add(email);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEmail", new { id = email.EmailId }, email);
@@ -108,13 +108,13 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var email = await _context.Email.SingleOrDefaultAsync(m => m.EmailId == id);
+            var email = await _context.EmailSet.SingleOrDefaultAsync(m => m.EmailId == id);
             if (email == null)
             {
                 return NotFound();
             }
 
-            _context.Email.Remove(email);
+            _context.EmailSet.Remove(email);
             await _context.SaveChangesAsync();
 
             return Ok(email);
@@ -122,7 +122,7 @@ namespace TeamGuenonWebApi.Controllers
 
         private bool EmailExists(int id)
         {
-            return _context.Email.Any(e => e.EmailId == id);
+            return _context.EmailSet.Any(e => e.EmailId == id);
         }
     }
 }
