@@ -2,6 +2,7 @@ import React from "react";
 import GoogleMapsLoader from 'google-maps';
 
 import {user} from './SignInRefugee';
+import {center} from './SignInRefugee';
 
 GoogleMapsLoader.KEY='AIzaSyBMHvTTCHmsNnI-EvP4Rq1VPQQjmr_aWNg';
 GoogleMapsLoader.LANGUAGE='en';
@@ -20,7 +21,7 @@ export default class RefugeeProfile extends React.Component {
 
         $(".modify-info").hide();
         GoogleMapsLoader.load(function(google){
-            var coordinates=new google.maps.LatLng(45.53088, -73.647439);
+            var coordinates=new google.maps.LatLng(user.address[0].lattitude, user.address[0].longitude);
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: coordinates,
                 zoom:15
@@ -79,7 +80,7 @@ export default class RefugeeProfile extends React.Component {
                 </form>
             </div>
             <div class="col-sm-6">
-                <div class="info">Refugee center : {user.centre}</div>
+                <div class="info">Refugee center : {center.name}</div>
                 <div class="info">Birth date : {user.dateOfBirth.substring(0,10)}</div>
             </div>
         </div>

@@ -19,7 +19,7 @@ export default class SignIn extends React.Component {
                         </Link>
                     </div>
                     <div class="col-sm-3">
-                        <Link to="/centerformpage">
+                        <Link to="/signincenter">
                             <div className="signIn">
                                 <div className="verticalAlign">Center</div>
                             </div>
