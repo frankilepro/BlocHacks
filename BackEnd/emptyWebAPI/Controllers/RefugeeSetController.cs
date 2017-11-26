@@ -54,6 +54,7 @@ namespace TeamGuenonWebApi.Controllers
             refugee.Documents = _context.Documents.Where(x => x.RefugeeId == refugee.RefugeeId).ToList();
             refugee.Email = _context.Email.Where(x => x.RefugeeId == refugee.RefugeeId).ToList();
             refugee.Phone = _context.Phone.Where(x => x.RefugeeId == refugee.RefugeeId).ToList();
+            refugee.Centre = _context.Centre.Single(x => x.CentreId == refugee.CentreId);
 
             return Ok(refugee);
         }
