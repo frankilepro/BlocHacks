@@ -4,11 +4,18 @@ import {Link} from 'react-router';
 export default class SignIn extends React.Component {
     render() {
         return (
-
+            
             <div class="jumbotron jumbotron-background">
+             <Link to="/centerformpage">
+                <div style={{float:"right", marginRight:"10px"}} className="signIn">
+                    <div className="verticalAlign">Register a Center</div>
+                </div>
+            </Link>
             <div class="container">
                 <div>
-                <h1 style={{textAlign:"center"}}>Sign in as :</h1>
+                <h1 className="signInHeader mg-top-big">Welcome to Canada</h1>
+                <p className="signInInfo">Facilitate the tracking of your information! You are a...</p>
+                
                 <div class="row">
                 <div class="col-sm-3"></div>
                     <div class="col-sm-3">

@@ -7,7 +7,7 @@ body{
     width:100%;
 }
 
-.content{
+.mg-top-big{
 	margin-top: 100px;
 }
 
@@ -24,8 +24,51 @@ body{
 }
 
 .verticalAlign{
-	padding-top: 18px;
-	padding-bottom: 18px;
+	padding: 18px;
+}
+
+.center-background{
+	background-image: url(https://images.unsplash.com/photo-1423589989400-cc0270157ed0?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);
+	
+				/* Full height */
+	height: 750px !important; 
+				
+				/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	-webkit-transition: background 300ms ease-in 200ms; /* property duration timing-function delay */
+    -moz-transition: background 300ms ease-in 200ms;
+    -o-transition: background 300ms ease-in 200ms;
+    transition: background 300ms ease-in 200ms;
+}
+
+.bigHeader{
+	text-align: center;
+	color: black !important;
+	font-size: 73px !important;
+	font-weight: 500 !important;
+	font-family: 'Roboto', sans-serif !important;
+	margin-bottom: 20px !important;
+}
+
+.signInHeader{
+	text-align: center;
+	color: white !important;
+	font-size: 73px !important;
+	font-weight: 500 !important;
+	font-family: 'Roboto', sans-serif !important;
+	margin-bottom: 20px !important;
+}
+
+.signInInfo{
+	text-align: center;
+	color: white !important;
+	font-size: 18px !important;
+	font-weight: normal !important;
+	font-family: 'Roboto', sans-serif !important;
+	margin-bottom: 40px !important;
 }
 
 .signIn{
@@ -48,6 +91,12 @@ body{
 .signIn:hover, .signIn:active, .signIn:link {
 	background: white;
 	color: black;
+}
+
+@media only screen and (max-device-width: 480px) {
+	.signIn{
+		margin-top: 40px;
+	}	
 }
 
 a, a:hover, a:link, a:active{
