@@ -20,7 +20,7 @@ export default observer(({ form }) => (
       <h2>Current Adress</h2>
       <hr/>
         <SimpleInput field={form.$('adressStreet')} />
-        <SelectInput field={form.$('adressCity')} />
+        <SimpleInput field={form.$('adressCity')} />
         <SelectInput field={form.$('adressProvince')} />
         <SimpleInput field={form.$('adressZipCode')} />
       <h2>Account Information</h2>

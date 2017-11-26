@@ -14,15 +14,15 @@ const fields = [
 {
   name: 'adressCity',
   label: 'City',
-  options: ['Montréal', 'Laval'],
   placeholder: 'ex : Montréal',
   rules: 'required|string',
 },
 {
   name: 'adressProvince',
   label: 'Province',
-  options: ['Quebec', 'Ontario'],
-  placeholder: 'ex : Quebec',
+  options: ['Québec', 'Ontario', 'British Colombia', 'Alberta',
+   'Nova Scotia', 'Terre-Neuve-et-Labrador', 'Saskatchewan', 'Manitoba', 'Nouveau Brunswick', 'Ile du Prince Edouard' ],
+  placeholder: 'Select a Province',
   rules: 'required|string',
 },
 {
