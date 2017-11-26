@@ -24,7 +24,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpGet]
         public IEnumerable<Documents> GetDocuments()
         {
-            return _context.Documents;
+            return _context.DocumentsSet;
         }
 
         // GET: api/DocumentSet/5
@@ -36,7 +36,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var documents = await _context.Documents.SingleOrDefaultAsync(m => m.DocumentId == id);
+            var documents = await _context.DocumentsSet.SingleOrDefaultAsync(m => m.DocumentId == id);
 
             if (documents == null)
             {
@@ -50,7 +50,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDocuments([FromRoute] int id, [FromBody] Documents documents)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || documents.TypeOfDoc[0] != '.')
             {
                 return BadRequest(ModelState);
             }
@@ -85,12 +85,12 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostDocuments([FromBody] Documents documents)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || documents.TypeOfDoc[0] != '.')
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Documents.Add(documents);
+            _context.DocumentsSet.Add(documents);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetDocuments", new { id = documents.DocumentId }, documents);
@@ -105,13 +105,13 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var documents = await _context.Documents.SingleOrDefaultAsync(m => m.DocumentId == id);
+            var documents = await _context.DocumentsSet.SingleOrDefaultAsync(m => m.DocumentId == id);
             if (documents == null)
             {
                 return NotFound();
             }
 
-            _context.Documents.Remove(documents);
+            _context.DocumentsSet.Remove(documents);
             await _context.SaveChangesAsync();
 
             return Ok(documents);
@@ -119,7 +119,7 @@ namespace TeamGuenonWebApi.Controllers
 
         private bool DocumentsExists(int id)
         {
-            return _context.Documents.Any(e => e.DocumentId == id);
+            return _context.DocumentsSet.Any(e => e.DocumentId == id);
         }
     }
 }

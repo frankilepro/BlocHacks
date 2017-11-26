@@ -24,7 +24,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpGet]
         public IEnumerable<Refugee> GetRefugee()
         {
-            return _context.Refugee;
+            return _context.RefugeeSet;
         }
 
         // GET: api/RefugeeSet/5
@@ -36,7 +36,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var refugee = await _context.Refugee.SingleOrDefaultAsync(m => m.RefugeeId == id);
+            var refugee = await _context.RefugeeSet.SingleOrDefaultAsync(m => m.RefugeeId == id);
 
             if (refugee == null)
             {
@@ -89,7 +89,7 @@ namespace TeamGuenonWebApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            _context.Refugee.Add(refugee);
+            _context.RefugeeSet.Add(refugee);
             
             await _context.SaveChangesAsync();
 
@@ -105,13 +105,13 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var refugee = await _context.Refugee.SingleOrDefaultAsync(m => m.RefugeeId == id);
+            var refugee = await _context.RefugeeSet.SingleOrDefaultAsync(m => m.RefugeeId == id);
             if (refugee == null)
             {
                 return NotFound();
             }
 
-            _context.Refugee.Remove(refugee);
+            _context.RefugeeSet.Remove(refugee);
             await _context.SaveChangesAsync();
 
             return Ok(refugee);
@@ -119,7 +119,7 @@ namespace TeamGuenonWebApi.Controllers
 
         private bool RefugeeExists(int id)
         {
-            return _context.Refugee.Any(e => e.RefugeeId == id);
+            return _context.RefugeeSet.Any(e => e.RefugeeId == id);
         }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TeamGuenonWebApi.Models;
+using System.Text.RegularExpressions;
 
 namespace TeamGuenonWebApi.Controllers
 {
@@ -24,7 +25,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpGet]
         public IEnumerable<Phone> GetPhone()
         {
-            return _context.Phone;
+            return _context.PhoneSet;
         }
 
         // GET: api/PhoneSet/5
@@ -36,7 +37,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var phone = await _context.Phone.SingleOrDefaultAsync(m => m.PhoneId == id);
+            var phone = await _context.PhoneSet.SingleOrDefaultAsync(m => m.PhoneId == id);
 
             if (phone == null)
             {
@@ -50,14 +51,14 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPhone([FromRoute] int id, [FromBody] Phone phone)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || phone.PhoneNumber.Count(x => char.IsNumber(x)) > 15 || !(Regex.Match(phone.PhoneNumber, @"^(\+[0-9]{9})$").Success))
             {
                 return BadRequest(ModelState);
             }
 
             if (id != phone.PhoneId)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
             _context.Entry(phone).State = EntityState.Modified;
@@ -85,12 +86,12 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostPhone([FromBody] Phone phone)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || phone.PhoneNumber.Count(x => char.IsNumber(x)) > 15 || !(Regex.Match(phone.PhoneNumber, @"^(\+[0-9]{9})$").Success))
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Phone.Add(phone);
+            _context.PhoneSet.Add(phone);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPhone", new { id = phone.PhoneId }, phone);
@@ -105,13 +106,13 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var phone = await _context.Phone.SingleOrDefaultAsync(m => m.PhoneId == id);
+            var phone = await _context.PhoneSet.SingleOrDefaultAsync(m => m.PhoneId == id);
             if (phone == null)
             {
                 return NotFound();
             }
 
-            _context.Phone.Remove(phone);
+            _context.PhoneSet.Remove(phone);
             await _context.SaveChangesAsync();
 
             return Ok(phone);
@@ -119,7 +120,7 @@ namespace TeamGuenonWebApi.Controllers
 
         private bool PhoneExists(int id)
         {
-            return _context.Phone.Any(e => e.PhoneId == id);
+            return _context.PhoneSet.Any(e => e.PhoneId == id);
         }
     }
 }

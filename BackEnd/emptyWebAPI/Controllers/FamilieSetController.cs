@@ -24,7 +24,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpGet]
         public IEnumerable<Family> GetFamily()
         {
-            return _context.Family;
+            return _context.FamilySet;
         }
 
         // GET: api/FamilieSet/5
@@ -36,7 +36,7 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var family = await _context.Family.SingleOrDefaultAsync(m => m.FamilyId == id);
+            var family = await _context.FamilySet.SingleOrDefaultAsync(m => m.FamilyId == id);
 
             if (family == null)
             {
@@ -50,7 +50,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFamily([FromRoute] int id, [FromBody] Family family)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || family.FamilySize < 0 || family.FamilySize > 25)
             {
                 return BadRequest(ModelState);
             }
@@ -85,12 +85,12 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostFamily([FromBody] Family family)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || family.FamilySize < 0 || family.FamilySize > 25)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Family.Add(family);
+            _context.FamilySet.Add(family);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetFamily", new { id = family.FamilyId }, family);
@@ -105,13 +105,13 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var family = await _context.Family.SingleOrDefaultAsync(m => m.FamilyId == id);
+            var family = await _context.FamilySet.SingleOrDefaultAsync(m => m.FamilyId == id);
             if (family == null)
             {
                 return NotFound();
             }
 
-            _context.Family.Remove(family);
+            _context.FamilySet.Remove(family);
             await _context.SaveChangesAsync();
 
             return Ok(family);
@@ -119,7 +119,7 @@ namespace TeamGuenonWebApi.Controllers
 
         private bool FamilyExists(int id)
         {
-            return _context.Family.Any(e => e.FamilyId == id);
+            return _context.FamilySet.Any(e => e.FamilyId == id);
         }
     }
 }
