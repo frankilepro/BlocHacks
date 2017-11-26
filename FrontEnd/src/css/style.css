@@ -35,11 +35,11 @@ body{
 
 .signCenterRefugee:hover, .signCenterRefugee:active, .signCenterRefugee:link {
 	background: white;
-	color: black;
+	color: #193446;
 }
 
 .back{
-	background: #337ab7;
+	background: #193446;
 	height: 67px;
 	padding-top: 18px;
 	padding-bottom: 18px;
@@ -76,8 +76,8 @@ body{
 }
 
 .center-background{
-	background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images.unsplash.com/photo-1466201249030-41e3ad750419?auto=format&fit=crop&w=1950&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);	
-				/* Full height */
+	background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images.unsplash.com/photo-1466201249030-41e3ad750419?auto=format&fit=crop&w=1950&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);					
+	/* Full height */
 	height: 750px !important; 
 				
 				/* Center and scale the image nicely */
@@ -92,8 +92,8 @@ body{
 }
 
 .centerSignIn-background{
-	background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images.unsplash.com/photo-1466201249030-41e3ad750419?auto=format&fit=crop&w=1950&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);	
-				/* Full height */
+	background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images.unsplash.com/photo-1466201249030-41e3ad750419?auto=format&fit=crop&w=1950&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);			
+	/* Full height */
 	height: 750px !important; 
 				
 				/* Center and scale the image nicely */
@@ -108,14 +108,16 @@ body{
 }
 
 .signUpCenter{
+	border-radius: 5px;
 	padding: 100px 50px;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.6);	
 }
 
 .signInCenter{
+	border-radius: 5px;	
 	margin-top:100px;
 	padding: 100px 150px;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.6);	
 }
 
 @media only screen and (max-device-width: 480px) {
@@ -179,7 +181,7 @@ body{
 }
 .signIn:hover, .signIn:active, .signIn:link {
 	background: white;
-	color: black;
+	color: #193446;
 }
 
 @media only screen and (max-device-width: 480px) {
@@ -262,13 +264,16 @@ small{
 }
 
 .footer{
-	background: #337ab7;
-}
+	background: #193446;
+}	
 
 .footer-padding{
-	padding: 50px
+	padding: 50px;
 }
 
 .footer-content{
+	font-size: 14px;
+	color: white;
+	font-weight: 400;
 	font-family: 'Roboto', sans-serif !important;
 }
