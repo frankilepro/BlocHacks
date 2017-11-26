@@ -48,7 +48,7 @@ export default class SignInRefugee extends React.Component {
         <div className="form-group">
             <form onSubmit={this.submit}>
                 <p className="bigHeader">Sign In</p>
-                <input id="refugee-username" type="text" placeholder="Username" class="form-control margin-bottom-sm"></input>
+                <input id="id-refugee" type="text" placeholder="Username" class="form-control margin-bottom-sm"></input>
                 <input id="refugee-password" type="password" placeholder="Password" class="form-control margin-bottom-sm"></input>
                 <button type="button" class="btn btn-primary btn-lg" onClick={this.submit} >Sign In</button>
             </form>
