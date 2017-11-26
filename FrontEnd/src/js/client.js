@@ -11,6 +11,8 @@ import RefugeFormPage from "./pages/RefugeeFormPage"
 import CenterFormPage from "./pages/CenterFormPage"
 import RefugeeProfile from "./pages/RefugeeProfile";
 import CenterProfile from "./pages/CenterProfile";
+import SignInRefugee from "./pages/SignInRefugee";
+import SignInCenter from "./pages/SignInCenter";
 
 const app = document.getElementById('app');
 
@@ -24,6 +26,8 @@ ReactDOM.render(
       <Route path="centerFormPage" name="centerFormPage" component={CenterFormPage}></Route>
       <Route path="refugeeprofile" name="refugeeprofile" component={RefugeeProfile}></Route>
       <Route path="centerprofile" name="centerprofile" component={CenterProfile}></Route>
+      <Route path="signinrefugee" name="signinrefugee" component={SignInRefugee}></Route>
+      <Route path="signincenter" name="signincenter" component={SignInCenter}></Route>
     </Route>
   </Router>,
 app);

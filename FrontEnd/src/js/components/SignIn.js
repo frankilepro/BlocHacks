@@ -14,14 +14,14 @@ export default class SignIn extends React.Component {
                 <div class="row">
                 <div class="col-sm-3"></div>
                     <div class="col-sm-3">
-                        <Link to="/refugeformpage">
+                        <Link to="/signinrefugee">
                             <div className="signIn">
                                 <div className="verticalAlign">Refugee</div>
                             </div>
                         </Link>
                     </div>
                     <div class="col-sm-3">
-                        <Link to="/centerformpage">
+                        <Link to="/signincenter">
                             <div className="signIn">
                                 <div className="verticalAlign">Center</div>
                             </div>

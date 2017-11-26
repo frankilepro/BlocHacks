@@ -27,7 +27,6 @@ namespace TeamGuenonWebApi.Models
         public DateTime DateOfBirth { get; set; }
         public DateTime? DateOfDeath { get; set; }
 
-        public Centre Centre { get; set; }
         public IEnumerable<Address> Address { get; set; }
         public ICollection<Documents> Documents { get; set; }
         public ICollection<Email> Email { get; set; }
