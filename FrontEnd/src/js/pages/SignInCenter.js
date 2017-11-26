@@ -21,7 +21,7 @@ export default class SignInCenter extends React.Component {
         .then(function(json){
             center = json;
             console.log(center);
-            $('#redirect-center').show();
+            window.location.href = $('#redirect-center > a').attr('href');
         });
         
     }
@@ -38,7 +38,7 @@ export default class SignInCenter extends React.Component {
                         <div onClick={this.submit}>asd
                         </div>
                     </form>
-                    <button id="redirect-center" ref={button => this.buttonElement = button}>
+                    <button class="btn btn-default" id="redirect-center" >
                         <Link to="/centerprofile">GO</Link>
                     </button>
                 </div>

@@ -61,64 +61,35 @@ namespace TeamGuenonWebApi.Controllers
 
         // PUT: api/CentreSet/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCentre([FromRoute] int id, [FromBody] Centre centre)
+        public IActionResult PutCentre([FromRoute] int id, [FromBody] Centre centre)
         {
-            bool valid = new EmailAddressAttribute().IsValid(centre.Email);
-
-            if (!ModelState.IsValid || !valid || centre.Email == null 
-                || centre.PhoneNumer.Count(x => char.IsNumber(x)) > 15)
-            {
-                return BadRequest(ModelState);
-            }
-            if (id != centre.CentreId)
-            {
-                return BadRequest();
-            }
-
-            var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(centre.FullAddressName);
-
-            centre.Lattitude = point.Latitude;
-            centre.Longitute = point.Longitude;
-
-            _context.Entry(centre).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CentreExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return BadRequest("Not implemented");
         }
 
         // POST: api/CentreSet
         [HttpPost]
         public async Task<IActionResult> PostCentre([FromBody] Centre centre)
         {
-            bool valid = new EmailAddressAttribute().IsValid(centre.Email);
-            if (!ModelState.IsValid || !valid || centre.Email == null
-                || centre.PhoneNumer.Count(x => char.IsNumber(x)) > 15)
+            if (_context.Centre.Any(x => x.CentreId == centre.CentreId))
             {
-                return BadRequest(ModelState);
+                _context.Centre.Update(centre);
             }
-            var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(centre.FullAddressName);
+            else
+            {
+                bool valid = new EmailAddressAttribute().IsValid(centre.Email);
+                if (!ModelState.IsValid || !valid || centre.Email == null
+                    || centre.PhoneNumer.Count(x => char.IsNumber(x)) > 15)
+                {
+                    return BadRequest(ModelState);
+                }
+                var locationService = new GoogleLocationService();
+                var point = locationService.GetLatLongFromAddress(centre.FullAddressName);
 
-            centre.Lattitude = point.Latitude;
-            centre.Longitute = point.Longitude;
+                centre.Lattitude = point.Latitude;
+                centre.Longitute = point.Longitude;
 
-            _context.Centre.Add(centre);
+                _context.Centre.Add(centre);
+            }
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCentre", new { id = centre.CentreId }, centre);
