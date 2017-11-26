@@ -89,9 +89,16 @@ namespace TeamGuenonWebApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            refugee.DateOfBirth = DateTime.Now;
             _context.Refugee.Add(refugee);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+            }
 
             return CreatedAtAction("GetRefugee", new { id = refugee.RefugeeId }, refugee);
         }
