@@ -49,7 +49,7 @@ namespace TeamGuenonWebApi.Controllers
             return Ok(centre);
         }
 
-        // GET: api/CentreSet/keka/5
+        // GET: api/CentreSet/closest/5
         [HttpGet("closest/{RefugeeId}")]
         public IEnumerable<Centre> GetClosestCentres([FromRoute] int refugeeId)
         {
