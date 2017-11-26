@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TeamGuenonWebApi.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace TeamGuenonWebApi.Controllers
 {
@@ -50,7 +51,8 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEmail([FromRoute] int id, [FromBody] Email email)
         {
-            if (!ModelState.IsValid)
+            bool valid = new EmailAddressAttribute().IsValid(email);
+            if (!ModelState.IsValid || !valid || email == null)
             {
                 return BadRequest(ModelState);
             }
@@ -85,7 +87,8 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostEmail([FromBody] Email email)
         {
-            if (!ModelState.IsValid)
+            bool valid = new EmailAddressAttribute().IsValid(email);
+            if (!ModelState.IsValid || !valid || email == null)
             {
                 return BadRequest(ModelState);
             }
