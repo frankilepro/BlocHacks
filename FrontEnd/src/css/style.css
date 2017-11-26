@@ -144,6 +144,15 @@ body{
 	margin-bottom: 20px !important;
 }
 
+.bigHeaderBlack{
+	text-align: center;
+	color: black !important;
+	font-size: 73px !important;
+	font-weight: 500 !important;
+	font-family: 'Roboto', sans-serif !important;
+	margin-bottom: 20px !important;
+}
+
 .signInHeader{
 	text-align: center;
 	color: white !important;
@@ -276,4 +285,13 @@ small{
 	color: white;
 	font-weight: 400;
 	font-family: 'Roboto', sans-serif !important;
+}
+
+.bgwhite{
+	background: white !important;
+}
+
+table{
+	margin: 100px;
+	margin-right: 200px;
 }

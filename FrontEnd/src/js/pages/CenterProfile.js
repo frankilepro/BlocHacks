@@ -34,8 +34,12 @@ export default class CenterProfile extends React.Component {
     showRefugees() {
         let rows = [];
         for(var i = 0; i < center.refugee.length; i++){
-          let text = "name: " + center.refugee[i].firstName + ", id : " + center.refugee[i].id;
-          rows.push(<h1 key={i} style={{backgroundColor:"yellow"}}>{text}<br></br></h1>);
+          let theName =center.refugee[i].firstName;
+          let theId =  center.refugee[i].id;
+          if(!theId){
+              theId = "N/D"
+          }
+          rows.push(<tr> <td>{theName}</td> <td>{theId}</td></tr>);
         }
         return <div>{rows}</div>;
     }
@@ -53,26 +57,31 @@ export default class CenterProfile extends React.Component {
     <div>
         <div class="row">
             <div class="col-sm-6">
-                <h1>{center.name}</h1>
+                <h1 className="bigHeaderBlack">{center.name}</h1>
             </div>
-            <div class="col-sm-6" style={{float:"right"}}>
-                <button class="btn btn-default" style={{marginTop:"20px"}}><Link to="/refugeformpage">Add refugee</Link></button>
+            <div class="col-sm-6">
+                <button class="btn btn-default" style={{marginTop:"20px"}}><Link to="/refugeeformpage">Add refugee</Link></button>
             </div>
         </div>
         <br></br>
         <br></br>
         <div class="row" style={{paddingBottom:"50px"}}>
-            <div class="col-sm-6 brdright show-info">
-                <div class="info">Address : {center.fullAddressName}</div>
-                <div class="info">E-mail : {center.email}</div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3 brdright show-info">
+                <div class="info"><b>Address :</b> {center.fullAddressName}</div>
+                <div class="info"><b>E-mail :</b> {center.email}</div>
             </div>
-            <div class="col-sm-6">
-                <div class="info">Talked languages : {center.languages}</div>
-                <div class="info">Phone number : {center.phoneNumer}</div>
+            <div class="col-sm-3">
+                <div class="info"><b>Talked languages :</b> {center.languages}</div>
+                <div class="info"><b>Phone number :</b> {center.phoneNumer}</div>
             </div>
+            <div class="col-sm-4"></div>
         </div>
         <div class="row"><div id="map"></div></div>
-        {this.showRefugees()}
+        <table className="table table-hover">
+            <tr> <th>Name</th> <th>ID</th></tr>
+            {this.showRefugees()}
+        </table>
     </div>
     );
   }
