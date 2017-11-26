@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TeamGuenonWebApi.Models
 {
-    public class Documents
+    public partial class Documents
     {
         [Key]
         public int DocumentId { get; set; }
@@ -12,6 +12,6 @@ namespace TeamGuenonWebApi.Models
         public string BinDoc { get; set; }
         public string TypeOfDoc { get; set; }
 
-        public Refugee Refugee { get; set; }
+        //public Refugee Refugee { get; set; }
     }
 }

@@ -4,8 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace TeamGuenonWebApi.Models
 {
-    public class TeamGuenonContext : DbContext
+    public partial class TeamGuenonContext : DbContext
     {
+        public TeamGuenonContext(DbContextOptions<TeamGuenonContext> options) : base(options)
+        { }
+
         public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<Centre> Centre { get; set; }
         public virtual DbSet<Documents> Documents { get; set; }
@@ -14,7 +17,5 @@ namespace TeamGuenonWebApi.Models
         public virtual DbSet<Phone> Phone { get; set; }
         public virtual DbSet<Refugee> Refugee { get; set; }
 
-        public TeamGuenonContext(DbContextOptions<TeamGuenonContext> options) : base(options)
-        { }
     }
 }

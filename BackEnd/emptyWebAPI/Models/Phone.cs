@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TeamGuenonWebApi.Models
 {
-    public class Phone
+    public partial class Phone
     {
         [Key]
         public int PhoneId { get; set; }
@@ -13,6 +13,6 @@ namespace TeamGuenonWebApi.Models
         public string Type { get; set; }
         public bool IsActive { get; set; }
 
-        public Refugee Refugee { get; set; }
+        //public Refugee Refugee { get; set; }
     }
 }

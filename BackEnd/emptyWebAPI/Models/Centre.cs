@@ -4,11 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TeamGuenonWebApi.Models
 {
-    public class Centre
+    public partial class Centre
     {
         public Centre()
         {
-            Address = new HashSet<Address>();
             Refugee = new HashSet<Refugee>();
         }
 
@@ -18,8 +17,10 @@ namespace TeamGuenonWebApi.Models
         public string Email { get; set; }
         public string Languages { get; set; }
         public string PhoneNumer { get; set; }
+        public string FullAddressName { get; set; }
+        public double Longitute { get; set; }
+        public double Lattitude { get; set; }
 
-        public ICollection<Address> Address { get; set; }
         public ICollection<Refugee> Refugee { get; set; }
     }
 }

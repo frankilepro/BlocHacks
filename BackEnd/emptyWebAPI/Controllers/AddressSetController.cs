@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TeamGuenonWebApi.Models;
+using GoogleMaps.LocationServices;
 
 namespace TeamGuenonWebApi.Controllers
 {
@@ -59,6 +60,11 @@ namespace TeamGuenonWebApi.Controllers
             {
                 return BadRequest();
             }
+            var locationService = new GoogleLocationService();
+            var point = locationService.GetLatLongFromAddress(address.AddressFullName);
+
+            address.Lattitude = point.Latitude;
+            address.Longitude = point.Longitude;
 
             _context.Entry(address).State = EntityState.Modified;
 
@@ -89,6 +95,21 @@ namespace TeamGuenonWebApi.Controllers
             {
                 return BadRequest(ModelState);
             }
+            
+            if (address.IsActive)
+            {
+                await _context.Address.ForEachAsync(x => x.IsActive = true);
+                //foreach (var item in _context.Address)
+                //{
+                //    item.IsActive = false;
+                //}
+                await _context.SaveChangesAsync();
+            }
+            var locationService = new GoogleLocationService();
+            var point = locationService.GetLatLongFromAddress(address.AddressFullName);
+
+            address.Lattitude = point.Latitude;
+            address.Longitude = point.Longitude;
 
             _context.Address.Add(address);
             await _context.SaveChangesAsync();

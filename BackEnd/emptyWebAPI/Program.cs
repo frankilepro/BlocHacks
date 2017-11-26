@@ -3,7 +3,6 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
-using TeamGuenonWebApi.Data;
 
 namespace TeamGuenonWebApi
 {
@@ -19,8 +18,18 @@ namespace TeamGuenonWebApi
                 var services = scope.ServiceProvider;
                 try
                 {
-                    //var context = services.GetRequiredService<BlocHackContext>();
-                    //Initializer.InitDb(context);
+                    //var context = services.GetRequiredService<TeamGuenonContext>();
+                    //context.Database.EnsureCreated();
+                    //context.Lolz.Add(new TestLol
+                    //{
+                    //    Name = "allo",
+                    //    lols = new Dodo
+                    //    {
+                    //        Name = "allo",
+                    //        Number = 8
+                    //    },
+                    //});
+                    //context.SaveChanges();
                 }
                 catch (Exception ex)
                 {

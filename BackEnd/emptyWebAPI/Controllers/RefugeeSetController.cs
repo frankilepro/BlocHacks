@@ -24,7 +24,14 @@ namespace TeamGuenonWebApi.Controllers
         [HttpGet]
         public IEnumerable<Refugee> GetRefugee()
         {
-            return _context.Refugee;
+            //var tmp = new IEnumerable<Refugee>(_context.Refugee.ToL);
+            //var tmp = new List<Refugee>();
+            //foreach (var item in _context.Refugee)
+            //{
+            //    item.Address = _context.Address.Where(x => x.RefugeeId == item.RefugeeId).ToList();
+            //}
+
+            return _context.Refugee;//.Local;
         }
 
         // GET: api/RefugeeSet/5
@@ -42,6 +49,11 @@ namespace TeamGuenonWebApi.Controllers
             {
                 return NotFound();
             }
+
+            refugee.Address = _context.Address.Where(x => x.RefugeeId == refugee.RefugeeId).ToList();
+            refugee.Documents = _context.Documents.Where(x => x.RefugeeId == refugee.RefugeeId).ToList();
+            refugee.Email = _context.Email.Where(x => x.RefugeeId == refugee.RefugeeId).ToList();
+            refugee.Phone = _context.Phone.Where(x => x.RefugeeId == refugee.RefugeeId).ToList();
 
             return Ok(refugee);
         }
