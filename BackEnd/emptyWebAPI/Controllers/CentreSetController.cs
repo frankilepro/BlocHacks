@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TeamGuenonWebApi.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
+using GoogleMaps.LocationServices;
 
 namespace TeamGuenonWebApi.Controllers
 {
@@ -62,11 +63,16 @@ namespace TeamGuenonWebApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-
             if (id != centre.CentreId)
             {
                 return BadRequest();
             }
+
+            var locationService = new GoogleLocationService();
+            var point = locationService.GetLatLongFromAddress(centre.FullAddressName);
+
+            centre.Lattitude = point.Latitude;
+            centre.Longitute = point.Longitude;
 
             _context.Entry(centre).State = EntityState.Modified;
 
@@ -99,6 +105,11 @@ namespace TeamGuenonWebApi.Controllers
             {
                 return BadRequest(ModelState);
             }
+            var locationService = new GoogleLocationService();
+            var point = locationService.GetLatLongFromAddress(centre.FullAddressName);
+
+            centre.Lattitude = point.Latitude;
+            centre.Longitute = point.Longitude;
 
             _context.Centre.Add(centre);
             await _context.SaveChangesAsync();
