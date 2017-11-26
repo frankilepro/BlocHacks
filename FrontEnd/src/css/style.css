@@ -1,0 +1,18 @@
+#map {
+    height:300px;
+    width:100%;
+}
+ 
+.navbar-collapse.in {
+    overflow: hidden;
+    max-height: none;
+    height: auto;
+}
+ 
+small{
+    color:red;  
+}
+ 
+.invalid{
+    border:1px solid #ff0000
+}

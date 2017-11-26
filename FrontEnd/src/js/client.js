@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Form from './components/Form'; 
+import form from './form'; 
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
 
 

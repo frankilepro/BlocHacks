@@ -1,72 +1,18 @@
-<<<<<<< HEAD
 import React from "react";
+import Form from '../components/Form';
+import form from '../form';
 
-export default class refugeform extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    handleSubmit(event) {
-     console.log('A name was submitted: ' + this.state.value);
-      event.preventDefault();
-    }
-  
+export default class refugeform extends React.Component {  
     render() {
       return (
-        <div>
-          <h1>Refuge</h1>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Name:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
+        <div class="col-md-12">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <h1>Create your Profile</h1>
+            <Form form={form} />  
+          </div>
+          <div class="col-md-3"></div>
         </div>
       );
     }
-=======
-import React from "react";
-
-export default class refugeform extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    handleSubmit(event) {
-     console.log('A name was submitted: ' + this.state.value);
-      event.preventDefault();
-    }
-  
-    render() {
-      return (
-        <div>
-          <h1>Refuge</h1>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Name:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-        </div>
-      );
-    }
->>>>>>> 8c35acbe0aca15e0051d097fdf56d78c8d3522af
   }
