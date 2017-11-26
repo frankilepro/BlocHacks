@@ -120,6 +120,7 @@ namespace TeamGuenonWebApi.Controllers
         {
             return _context.Centre.Any(e => e.CentreId == id);
         }
+
         private double CalculateDistance(double lon1, double lon2, double lat1, double lat2)
         {
             const double EARTH_RADIUS = 6371; //KM

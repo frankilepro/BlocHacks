@@ -64,17 +64,6 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            using (FileStream fs = new FileStream(@"C:\Users\yoang\Desktop\pia21970-opt.jpg", FileMode.Open))
-            {
-                using (BinaryReader br = new BinaryReader(fs))
-
-                {
-                    byte[] bin = br.ReadBytes(Convert.ToInt32(fs.Length));
-                    documents.BinDoc = Convert.ToBase64String(bin);
-                }
-            }
-
-
             if (_context.Documents.Any(x => x.DocumentId == documents.DocumentId))
             {
                 _context.Documents.Update(documents);
@@ -88,6 +77,28 @@ namespace TeamGuenonWebApi.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetDocuments", new { id = documents.DocumentId }, documents);
+        }
+
+        // POST: api/DocumentSet/UploadFile
+        [HttpPost("UploadFile")]
+        public async Task<IActionResult> Post(IFormFile file)
+        {
+            long size = file.Length;
+            var test = _context.Documents.Single(x => x.DocumentId == 13);
+            var filePath = Path.GetTempFileName();
+            if (size > 0)
+            {
+                using (var stream = file.OpenReadStream())
+                {
+                    using (BinaryReader br = new BinaryReader(stream))
+                    {
+                        byte[] bin = br.ReadBytes((int)stream.Length);
+                        test.BinDoc = Convert.ToBase64String(bin);
+                    }
+                }
+                await _context.SaveChangesAsync();
+            }
+            return Ok("wow");
         }
 
         // DELETE: api/DocumentSet/5

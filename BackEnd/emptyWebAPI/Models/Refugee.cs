@@ -16,14 +16,12 @@ namespace TeamGuenonWebApi.Models
 
         [Key]
         public int RefugeeId { get; set; }
-        public int CentreId { get; set; }
-        public int FamilyId { get; set; }
+        public int? CentreId { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Languages { get; set; }
         public string ContryOfBirth { get; set; }
         public string CityOfBirth { get; set; }
-        public string FamilyStatus { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime? DateOfDeath { get; set; }
 
