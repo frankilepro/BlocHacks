@@ -60,32 +60,9 @@ namespace TeamGuenonWebApi.Controllers
 
         // PUT: api/RefugeeSet/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRefugee([FromRoute] int id, [FromBody] Refugee refugee)
+        public IActionResult PutRefugee([FromRoute] int id, [FromBody] Refugee refugee)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var tmpRef = _context.Refugee.Single(x => x.RefugeeId == id);
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RefugeeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return BadRequest("Not Implemented");
         }
 
         // POST: api/RefugeeSet
@@ -96,7 +73,15 @@ namespace TeamGuenonWebApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            _context.Refugee.Add(refugee);
+
+            if (_context.Refugee.Any(x=> x.RefugeeId == refugee.RefugeeId))
+            {
+                _context.Refugee.Update(refugee);
+            }
+            else
+            {
+                _context.Refugee.Add(refugee);
+            }
             
             await _context.SaveChangesAsync();
 

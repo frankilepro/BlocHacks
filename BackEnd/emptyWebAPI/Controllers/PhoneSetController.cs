@@ -51,35 +51,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPhone([FromRoute] int id, [FromBody] Phone phone)
         {
-            if (!ModelState.IsValid || phone.PhoneNumber.Count(x => char.IsNumber(x)) > 15)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != phone.PhoneId)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.Entry(phone).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PhoneExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return BadRequest("Not implemented");
         }
 
         // POST: api/PhoneSet
@@ -91,7 +63,17 @@ namespace TeamGuenonWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Phone.Add(phone);
+            if (_context.Phone.Any(x => x.PhoneId == phone.PhoneId))
+            {
+                _context.Phone.Update(phone);
+            }
+            else
+            {
+                _context.Phone.Add(phone);
+            }
+
+
+   
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPhone", new { id = phone.PhoneId }, phone);
