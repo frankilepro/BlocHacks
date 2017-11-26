@@ -49,14 +49,8 @@ namespace TeamGuenonWebApi.Controllers
             return Ok(centre);
         }
 
-        private double Oli(double longitude, double longitute, double lattitude1, double lattitude2)
-        {
-            throw new NotImplementedException();
-            return 0.0;
-        }
-
-        // GET: api/CentreSet/5
-        [HttpGet("{RefugeeId}")]
+        // GET: api/CentreSet/keka/5
+        [HttpGet("closest/{RefugeeId}")]
         public IEnumerable<Centre> GetClosestCentres([FromRoute] int refugeeId)
         {
             var address = _context.Address.SingleOrDefault(x => x.RefugeeId == refugeeId);
