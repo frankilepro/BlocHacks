@@ -98,7 +98,7 @@ namespace TeamGuenonWebApi.Controllers
             
             if (address.IsActive)
             {
-                await _context.Address.ForEachAsync(x => x.IsActive = true);
+                await _context.Address.ForEachAsync(x => x.IsActive = false);
                 //foreach (var item in _context.Address)
                 //{
                 //    item.IsActive = false;
