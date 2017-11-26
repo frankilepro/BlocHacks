@@ -260,3 +260,15 @@ small{
 .invalid{
     border:1px solid #ff0000
 }
+
+.footer{
+	background: #337ab7;
+}
+
+.footer-padding{
+	padding: 50px
+}
+
+.footer-content{
+	font-family: 'Roboto', sans-serif !important;
+}

@@ -5,7 +5,7 @@ export default class SignIn extends React.Component {
     render() {
         return (
             
-            <div class="jumbotron jumbotron-background">
+            <div class="jumbotron-background">
             <div class="container">
                 <div>
                 <h1 className="signInHeader mg-top-big">Welcome to Canada</h1>
