@@ -87,7 +87,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostEmail([FromBody] Email email)
         {
-            bool valid = new EmailAddressAttribute().IsValid(email);
+            bool valid = new EmailAddressAttribute().IsValid(email.EmailAddress);
             if (!ModelState.IsValid || !valid || email == null)
             {
                 return BadRequest(ModelState);
