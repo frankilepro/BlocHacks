@@ -46,6 +46,8 @@ namespace TeamGuenonWebApi.Controllers
                 return NotFound();
             }
 
+            centre.Refugee = _context.Refugee.Where(x => x.CentreId == centre.CentreId).ToList();
+       
             return Ok(centre);
         }
 
