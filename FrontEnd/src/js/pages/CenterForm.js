@@ -11,6 +11,4 @@ export default class CenterForm extends React.Component {
      );
   
    }
-  
  }
-  

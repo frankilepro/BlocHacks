@@ -1,8 +1,9 @@
+
 import React from "react";
 import Form from '../components/Form';
 import form from '../form';
 
-export default class refugeform extends React.Component {  
+export default class refugeform extends React.Component {
     render() {
       return (
         <div class="col-md-12">
