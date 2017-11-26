@@ -66,7 +66,7 @@ namespace TeamGuenonWebApi.Controllers
 
 
             if (!ModelState.IsValid || !valid || centre.Email == null 
-                || centre.PhoneNumer.Count(x => char.IsNumber(x)) > 15 || !(Regex.Match(centre.PhoneNumer, @"^(\+[0-9]{9})$").Success))
+                || centre.PhoneNumer.Count(x => char.IsNumber(x)) > 15)
             {
                 return BadRequest(ModelState);
             }
@@ -107,8 +107,8 @@ namespace TeamGuenonWebApi.Controllers
         public async Task<IActionResult> PostCentre([FromBody] Centre centre)
         {
             bool valid = new EmailAddressAttribute().IsValid(centre.Email);
-            if (!ModelState.IsValid/* || !valid || centre.Email == null
-                || centre.PhoneNumer.Count(x => char.IsNumber(x)) > 15 || !(Regex.Match(centre.PhoneNumer, @"^(\+[0-9]{9})$").Success)*/)
+            if (!ModelState.IsValid || !valid || centre.Email == null
+                || centre.PhoneNumer.Count(x => char.IsNumber(x)) > 15)
             {
                 return BadRequest(ModelState);
             }

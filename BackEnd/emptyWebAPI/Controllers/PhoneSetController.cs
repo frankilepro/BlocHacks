@@ -51,7 +51,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPhone([FromRoute] int id, [FromBody] Phone phone)
         {
-            if (!ModelState.IsValid || phone.PhoneNumber.Count(x => char.IsNumber(x)) > 15 || !(Regex.Match(phone.PhoneNumber, @"^(\+[0-9]{9})$").Success))
+            if (!ModelState.IsValid || phone.PhoneNumber.Count(x => char.IsNumber(x)) > 15)
             {
                 return BadRequest(ModelState);
             }
@@ -86,7 +86,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostPhone([FromBody] Phone phone)
         {
-            if (!ModelState.IsValid || phone.PhoneNumber.Count(x => char.IsNumber(x)) > 15 || !(Regex.Match(phone.PhoneNumber, @"^(\+[0-9]{9})$").Success))
+            if (!ModelState.IsValid || phone.PhoneNumber.Count(x => char.IsNumber(x)) > 15)
             {
                 return BadRequest(ModelState);
             }
