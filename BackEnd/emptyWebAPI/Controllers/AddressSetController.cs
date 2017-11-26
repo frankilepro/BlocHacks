@@ -51,7 +51,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAddress([FromRoute] int id, [FromBody] Address address)
         {
-            if (!ModelState.IsValid || address.AddressFullName.Any(char.IsDigit))
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
@@ -91,7 +91,7 @@ namespace TeamGuenonWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PostAddress([FromBody] Address address)
         {
-            if (!ModelState.IsValid || address.AddressFullName.Any(char.IsDigit))
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
