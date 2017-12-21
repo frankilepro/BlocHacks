@@ -18,12 +18,12 @@ export default class RefugeeProfile extends React.Component {
     }
 
     componentDidMount(){
-        let API_CLOSEST="http://teamguenonwebapi.azurewebsites.net/api/centreset/closest/"+user.refugeeId;
+        let API_CLOSEST="https://teamguenonwebapi.azurewebsites.net/api/centreset/closest/"+user.refugeeId;
         console.log(API_CLOSEST);
         let closestArray = $.get(API_CLOSEST, function(res){
             $(".modify-info").hide();
             GoogleMapsLoader.load(function(google){
-                var coordinates=new google.maps.LatLng(user.address[0].lattitude, user.address[0].longitude);
+                var coordinates=new google.maps.LatLng(user.address[user.address.length-1].lattitude, user.address[user.address.length-1].longitude);
                 var map = new google.maps.Map(document.getElementById('map'), {
                     center: coordinates,
                     zoom:10
@@ -79,7 +79,7 @@ export default class RefugeeProfile extends React.Component {
 
         console.log(user.email);
         
-        let API_URL = "http://teamguenonwebapi.azurewebsites.net/api/emailset/";
+        let API_URL = "https://teamguenonwebapi.azurewebsites.net/api/emailset/";
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -115,9 +115,9 @@ export default class RefugeeProfile extends React.Component {
         <br></br>
         <div class="row" style={{paddingBottom:"50px"}}>
             <div class="col-sm-6 brdright show-info">
-                <div class="info">Address : {user.address[0].addressFullName}</div>
-                <div class="info">E-mail : {user.email[0].emailAddress}</div>
-                <div class="info">Phone number : {user.phone[0].phoneNumber}</div>
+                <div class="info">Address : {user.address[user.address.length-1].addressFullName}</div>
+                <div class="info">E-mail : {user.email[user.email.length-1].emailAddress}</div>
+                <div class="info">Phone number : {user.phone[user.phone.length-1].phoneNumber}</div>
                 <br></br>
                 <button class="btn btn-default" onClick={this.modify}>Modify my informations</button>
             </div>

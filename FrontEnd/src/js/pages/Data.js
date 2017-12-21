@@ -16,7 +16,7 @@ export default class Data extends React.Component {
     .then(function(response){
       return response.json();
     })
-    .then(function(json){
+    .then(function(json){ 
       console.log(json);
       this.setState({
         data: json

@@ -13,7 +13,7 @@ export default class SignInCenter extends React.Component {
         let id =$("#login-center").val();
         let login = $("#login-center").val();
         let passwd = $("#center-password").val();
-        let API_URL="http://teamguenonwebapi.azurewebsites.net/api/centreset/" + id;
+        let API_URL="https://teamguenonwebapi.azurewebsites.net/api/centreset/" + id;
 
         fetch(API_URL)
         .then(function(response){

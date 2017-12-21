@@ -12,7 +12,7 @@ export default class SignInRefugee extends React.Component {
     submit = (e) => {
         e.preventDefault();
         let id = $("#id-refugee").val();
-        let API_URL_REFUGEE="http://teamguenonwebapi.azurewebsites.net/api/refugeeset/"+id;
+        let API_URL_REFUGEE="https://teamguenonwebapi.azurewebsites.net/api/refugeeset/"+id;
         fetch(API_URL_REFUGEE)
         .then(function(response){
             return response.json();
@@ -20,7 +20,7 @@ export default class SignInRefugee extends React.Component {
         .then(function(json){
             user = json;
             console.log(user);
-            let API_URL_CENTER="http://teamguenonwebapi.azurewebsites.net/api/centreset/"+user.centreId;
+            let API_URL_CENTER="https://teamguenonwebapi.azurewebsites.net/api/centreset/"+user.centreId;
             fetch(API_URL_CENTER)
             .then(function(response){
                 return response.json();

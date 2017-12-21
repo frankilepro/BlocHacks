@@ -30,7 +30,7 @@ export default class CenterProfile extends React.Component {
                 map:map
             });
         });
-        fetch("http://teamguenonwebapi.azurewebsites.net/api/centreset/"+center.centreId)
+        fetch("https://teamguenonwebapi.azurewebsites.net/api/centreset/"+center.centreId)
         .then(function(res){
             return res.json();
         })

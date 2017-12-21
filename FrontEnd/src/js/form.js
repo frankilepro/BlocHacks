@@ -109,7 +109,7 @@ const hooks = {
     dateOfBirth: form.values().dateOfBirth
    }
    console.log(refugee);
-   let API_URL_REFUGEE = "http://teamguenonwebapi.azurewebsites.net/api/refugeeset";
+   let API_URL_REFUGEE = "https://teamguenonwebapi.azurewebsites.net/api/refugeeset";
    var settings = {
        "async": true,
        "crossDomain": true,
@@ -123,9 +123,9 @@ const hooks = {
 
    $.ajax(settings).done(function (response) {
        console.log(response);
-       let API_URL_EMAIL = "http://teamguenonwebapi.azurewebsites.net/api/emailset";
-       let API_URL_ADDRESS = "http://teamguenonwebapi.azurewebsites.net/api/addressset";
-       let API_URL_PHONE = "http://teamguenonwebapi.azurewebsites.net/api/phoneset";
+       let API_URL_EMAIL = "https://teamguenonwebapi.azurewebsites.net/api/emailset";
+       let API_URL_ADDRESS = "https://teamguenonwebapi.azurewebsites.net/api/addressset";
+       let API_URL_PHONE = "https://teamguenonwebapi.azurewebsites.net/api/phoneset";
     
        console.log(response.refugeeId);
     
